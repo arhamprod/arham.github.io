@@ -6,6 +6,8 @@
   <title>Arham | Producer & Engineer</title>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: 'Manrope', sans-serif;
@@ -15,12 +17,12 @@
       overflow-x: hidden;
     }
 
-    .bg-video {
+    video.bg-video {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      height: 100%;
+      width: 100%;
       object-fit: cover;
       z-index: -10;
     }
@@ -29,8 +31,8 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      height: 100%;
+      width: 100%;
       background: rgba(0, 0, 0, 0.4);
       z-index: -5;
     }
@@ -39,12 +41,12 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0,0,0,0.5);
       display: flex;
       justify-content: center;
       gap: 2em;
       padding: 1em;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       z-index: 100;
     }
 
@@ -55,7 +57,7 @@
     }
 
     header {
-      height: 80vh;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -69,11 +71,12 @@
       background: rgba(0, 0, 0, 0.5);
       padding: 0.5em 1em;
       color: #fff;
+      border-radius: 10px;
     }
 
     header p {
       font-size: 1.5em;
-      margin-top: 0.5em;
+      margin-top: 1em;
       background-image: linear-gradient(90deg,#ff7e5f,#feb47b);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -84,8 +87,16 @@
       padding: 4em 2em;
       max-width: 1000px;
       margin: auto;
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.4);
       border-radius: 12px;
+      backdrop-filter: blur(6px);
+    }
+
+    h2 {
+      background: rgba(0,0,0,0.5);
+      padding: 0.25em 0.75em;
+      border-radius: 8px;
+      display: inline-block;
     }
 
     .preview-grid, .grid {
@@ -173,14 +184,7 @@
       color: #aaa;
     }
 
-    h2 {
-      background: rgba(0,0,0,0.5);
-      display: inline-block;
-      padding: 0.25em 0.75em;
-      border-radius: 8px;
-    }
-
-    @media(max-width:600px) {
+    @media(max-width:600px){
       nav { flex-direction: column; gap: 1em; }
       header h1 { font-size: 2.5em; }
     }
@@ -207,7 +211,7 @@
 
   <section id="about">
     <h2>About</h2>
-    <p style="color: #fff; background: rgba(0,0,0,0.3); padding: 1em; border-radius: 10px;">
+    <p style="color:#fff; background: rgba(0,0,0,0.3); padding: 1em; border-radius: 10px;">
       Arham is a Canadian music producer and audio engineer with a versatile sonic palette. From soulful melodies to hard-hitting mixes, he has contributed to works across Toronto’s emerging scene. With credits in production, mixing, and mastering, Arham’s fingerprints are on the future of music.
     </p>
   </section>
