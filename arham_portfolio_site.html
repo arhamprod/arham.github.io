@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arham | Music Producer & Engineer</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #0f0f0f;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: url('Arham-Linktree-PP.jpg') no-repeat center center/cover;
+    }
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 0.5em 1em;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      gap: 2em;
+      padding: 1em;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+    section {
+      padding: 4em 2em;
+      max-width: 900px;
+      margin: auto;
+    }
+    .discography-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2em;
+    }
+    .release {
+      background: #1a1a1a;
+      padding: 1em;
+      border-radius: 8px;
+    }
+    footer {
+      text-align: center;
+      padding: 2em;
+      background: #111;
+    }
+    iframe {
+      width: 100%;
+      height: 80px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#discography">Discography</a>
+    <a href="#releases">Releases</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header>
+    <h1>Arham</h1>
+    <p>Producer. Engineer. Artist.</p>
+  </header>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>Arham is a Canadian music producer and audio engineer with a versatile sonic palette. From soulful melodies to hard-hitting mixes, he has contributed to works across Toronto’s emerging scene. With credits in production, mixing, and mastering, Arham’s fingerprints are on the future of music.</p>
+  </section>
+
+  <section id="discography">
+    <h2>Discography</h2>
+    <div class="discography-grid">
+      <!-- Repeat this block for each track -->
+      <div class="release">
+        <p><strong>PLAZA – Use Me</strong></p>
+        <p>Produced</p>
+        <iframe src="https://open.spotify.com/embed/track/4KtM8htlLgmmwlq5xFHYlp" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+      </div>
+      <!-- Add others similarly -->
+    </div>
+  </section>
+
+  <section id="releases">
+    <h2>My Releases</h2>
+    <iframe src="https://open.spotify.com/embed/album/1579805926"></iframe>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>📧 Email: <a href="mailto:yourname@yourdomain.com" style="color: #fff;">yourname@yourdomain.com</a></p>
+    <p>🔗 <a href="https://www.youtube.com/@arham2906" target="_blank">YouTube</a> | <a href="https://soundcloud.com/arhamprod" target="_blank">SoundCloud</a></p>
+  </section>
+
+  <footer>
+    <p>© Arham. All rights reserved.</p>
+  </footer>
+</body>
+</html>
