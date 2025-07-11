@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arham | Music Producer & Engineer</title>
+  <style>
+    body { margin: 0; font-family: sans-serif; background-color: #0f0f0f; color: #fff; scroll-behavior: smooth; }
+    header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: url('Arham-Linktree-PP.jpg') no-repeat center center/cover; }
+    header h1 { font-size: 3em; margin: 0; background: rgba(0,0,0,0.6); padding: 0.5em 1em; }
+    nav { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.9); display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5em; padding: 1em; z-index: 1000; }
+    nav a { color: #fff; text-decoration: none; font-size: 1em; }
+    section { padding: 4em 2em; max-width: 1000px; margin: auto; }
+    .discography-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 2em; }
+    .release-card { background: #1a1a1a; border-radius: 8px; overflow: hidden; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: transform 0.3s ease; }
+    .release-card:hover { transform: translateY(-5px); }
+    .release-card img { width: 100%; display: block; }
+    .release-info { padding: 1em; }
+    .release-info p { margin: 0.5em 0; }
+    .release-info a.button { display: inline-block; margin-top: 0.5em; padding: 0.5em 1em; background: #1DB954; color: #fff; border-radius: 4px; text-decoration: none; font-weight: bold; }
+    .full-link { text-align: center; margin: 2em 0; }
+    .full-link a { display: inline-block; padding: 0.75em 1.5em; background: #fff; color: #000; border-radius: 4px; text-decoration: none; font-weight: bold; }
+    footer { text-align: center; padding: 2em; background: #111; }
+    @media (max-width:600px) { header h1 { font-size:2em; } nav { gap:1em; flex-direction:column; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#about">About</a>
+    <a href="discography.html">Discography</a>
+    <a href="#releases">Releases</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header>
+    <h1>Arham</h1>
+    <p>Producer. Engineer. Artist.</p>
+  </header>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>Arham is a Canadian music producer and audio engineer with a versatile sonic palette. From soulful melodies to hard-hitting mixes, he has contributed to works across Toronto’s emerging scene. With credits in production, mixing, and mastering, Arham’s fingerprints are on the future of music.</p>
+  </section>
+
+  <section id="releases">
+    <h2>My Releases</h2>
+    <div class="discography-grid">
+      <div class="release-card">
+        <a href="https://album.link/i/1579805926" target="_blank">
+          <img src="covers/your-ep.jpg" alt="Your EP cover art" />
+        </a>
+        <div class="release-info">
+          <p><strong>Your EP Title</strong></p>
+          <a class="button" href="https://album.link/i/1579805926" target="_blank">Listen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="full-link">
+    <a href="discography.html">View Full Discography</a>
+  </div>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>📧 Email: <a href="mailto:arhamprod@gmail.com" style="color:#fff;">arhamprod@gmail.com</a></p>
+    <p>🔗 <a href="https://www.youtube.com/@arham2906" target="_blank">YouTube</a> | <a href="https://soundcloud.com/arhamprod" target="_blank">SoundCloud</a></p>
+  </section>
+
+  <footer>
+    <p>© Arham. All rights reserved.</p>
+  </footer>
+</body>
+</html>

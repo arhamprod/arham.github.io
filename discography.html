@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arham | Full Discography</title>
+  <style>
+    body { margin: 0; font-family: sans-serif; background: #0f0f0f; color: #fff; }
+    header { padding: 2em; text-align: center; }
+    header h1 { margin: 0; font-size: 2.5em; }
+    .discography-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 2em; padding: 2em; max-width:1000px; margin:auto; }
+    .release-card { background: #1a1a1a; border-radius:8px; overflow:hidden; text-align:center; box-shadow:0 4px 8px rgba(0,0,0,0.3); transition:transform 0.3s ease; }
+    .release-card:hover { transform:translateY(-5px); }
+    .release-card img { width:100%; display:block; }
+    .release-info { padding:1em; }
+    .release-info a.button { display:inline-block; margin-top:0.5em; padding:0.5em 1em; background:#1DB954; color:#fff; border-radius:4px; text-decoration:none; font-weight:bold; }
+    nav { position:fixed; top:0; width:100%; background:rgba(0,0,0,0.9); display:flex; justify-content:center; gap:1.5em; padding:1em; z-index:1000; }
+    nav a { color:#fff; text-decoration:none; }
+    footer { text-align:center; padding:2em; background:#111; margin-top:2em; }
+    @media(max-width:600px) { nav { flex-direction:column; gap:1em; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="discography.html">Discography</a>
+    <a href="index.html#releases">Releases</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+
+  <header>
+    <h1>Full Discography</h1>
+  </header>
+
+  <div class="discography-grid">
+    <div class="release-card">
+      <a href="https://album.link/i/1585490606" target="_blank">
+        <img src="covers/nocturnes.jpg" alt="PLAZA – Nocturnes" />
+      </a>
+      <div class="release-info">
+        <p><strong>PLAZA – Nocturnes (Use Me)</strong></p>
+        <p>Produced</p>
+        <a class="button" href="https://album.link/i/1585490606" target="_blank">Listen</a>
+      </div>
+    </div>
+    <div class="release-card">
+      <a href="https://song.link/i/1604296095" target="_blank">
+        <img src="covers/dont-care.jpg" alt="Jon Vinyl – Don't Care" />
+      </a>
+      <div class="release-info">
+        <p><strong>Jon Vinyl – Don't Care</strong></p>
+        <p>Produced</p>
+        <a class="button" href="https://song.link/i/1604296095" target="_blank">Listen</a>
+      </div>
+    </div>
+    <!-- Add other projects cards here -->
+  </div>
+
+  <footer>
+    <p>© Arham. All rights reserved.</p>
+  </footer>
+</body>
+</html>
