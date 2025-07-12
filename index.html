@@ -6,12 +6,29 @@
   <title>Arham | Producer & Engineer</title>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Manrope', sans-serif;
       background: #000;
       color: #fff;
       scroll-behavior: smooth;
+      position: relative;
+    }
+
+    video.bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: cover;
+      z-index: -1;
     }
 
     nav {
@@ -41,16 +58,7 @@
       align-items: center;
       text-align: center;
       position: relative;
-    }
-
-    header video.bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
+      z-index: 1;
     }
 
     header h1 {
@@ -59,7 +67,6 @@
       background: rgba(0, 0, 0, 0.3);
       padding: 0.25em 0.75em;
       border-radius: 10px;
-      z-index: 1;
       color: #fff;
     }
 
@@ -70,7 +77,6 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       font-weight: 700;
-      z-index: 1;
     }
 
     section {
@@ -79,6 +85,7 @@
       margin: auto;
       background: rgba(0, 0, 0, 0.3);
       border-radius: 12px;
+      z-index: 1;
     }
 
     .preview-grid,
@@ -111,7 +118,6 @@
     .card-info,
     .release-info {
       padding: 1em;
-      color: #fff;
     }
 
     .button {
@@ -190,7 +196,7 @@
   </style>
 </head>
 <body>
-  <video class="bg-video" autoplay muted loop>
+  <video class="bg-video" autoplay muted loop playsinline>
     <source src="background.mp4" type="video/mp4" />
   </video>
 
@@ -208,7 +214,9 @@
 
   <section id="about">
     <h2>About</h2>
-    <p>Arham is a Canadian music producer and audio engineer with a versatile sonic palette. From soulful melodies to hard-hitting mixes, he has contributed to works across Toronto’s emerging scene. With credits in production, mixing, and mastering, Arham’s fingerprints are on the future of music.</p>
+    <p>
+      Arham is a Canadian music producer and audio engineer with a versatile sonic palette. From soulful melodies to hard-hitting mixes, he has contributed to works across Toronto’s emerging scene. With credits in production, mixing, and mastering, Arham’s fingerprints are on the future of music.
+    </p>
   </section>
 
   <section id="preview">
