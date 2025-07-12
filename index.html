@@ -14,6 +14,22 @@
       scroll-behavior: smooth;
     }
 
+    .video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     nav {
       position: fixed;
       top: 0;
@@ -39,17 +55,6 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      position: relative;
-    }
-
-    header video.bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
     }
 
     header h1 {
@@ -173,10 +178,11 @@
   </style>
 </head>
 <body>
-
-  <video class="bg-video" autoplay muted loop>
-    <source src="background.mp4" type="video/mp4">
-  </video>
+  <div class="video-container">
+    <video autoplay muted loop>
+      <source src="background.mp4" type="video/mp4">
+    </video>
+  </div>
 
   <nav>
     <a href="#about">About</a>
