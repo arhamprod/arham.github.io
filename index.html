@@ -136,17 +136,22 @@
   <footer>
     <p>© Arham. All rights reserved.</p>
   </footer>
-  <script>
+ <script>
   let lastScrollY = window.scrollY;
   const navbar = document.querySelector('.navbar');
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > lastScrollY) {
-      navbar.classList.add('nav-hidden'); // Hide on scroll down
+    const currentScrollY = window.scrollY;
+    const scrollDirectionDown = currentScrollY > lastScrollY;
+    const nearBottom = (window.innerHeight + currentScrollY) >= (document.body.offsetHeight - 10);
+
+    if (scrollDirectionDown && !nearBottom) {
+      navbar.classList.add('nav-hidden');  // hide nav
     } else {
-      navbar.classList.remove('nav-hidden'); // Show on scroll up
+      navbar.classList.remove('nav-hidden');  // show nav
     }
-    lastScrollY = window.scrollY;
+
+    lastScrollY = currentScrollY;
   });
 </script>
 </body>
