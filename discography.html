@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Discography | Arham</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #000;
+      color: #fff;
+      line-height: 1.6;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      gap: 2em;
+      padding: 1em;
+      z-index: 100;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      text-transform: uppercase;
+      transition: opacity 0.3s ease;
+    }
+    nav a:hover { opacity: 0.7; }
+    header {
+      padding-top: 6em;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 1em;
+      font-size: 2.5em;
+      font-weight: 600;
+    }
+    section {
+      padding: 4em 2em;
+      max-width: 1100px;
+      margin: auto;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2em;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.2);
+    }
+    img {
+      width: 100%;
+      display: block;
+    }
+    .card-info {
+      padding: 1em;
+    }
+    .button {
+      display: inline-block;
+      margin-top: 0.5em;
+      padding: 0.5em 1em;
+      background: #1DB954;
+      color: #fff;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 14px;
+      transition: transform 0.2s ease, opacity 0.3s ease;
+    }
+    .button:hover {
+      transform: translateY(-2px);
+      opacity: 0.85;
+    }
+    footer {
+      text-align: center;
+      padding: 2em;
+      background: #000;
+      color: #aaa;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    @media(max-width:600px){
+      nav { flex-direction: column; gap: 1em; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="releases.html">Releases</a>
+    <a href="discography.html">Discography</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <header>
+    <h1>Full Discography</h1>
+  </header>
+
+  <section>
+    <div class="grid">
+      <!-- PLAZA – Nocturnes -->
+      <div class="card">
+        <a href="https://album.link/i/1585490606" target="_blank"><img src="covers/nocturnes.jpg" alt="PLAZA – Nocturnes"></a>
+        <div class="card-info">
+          <p><strong>PLAZA – Nocturnes (Use Me)</strong></p>
+          <a class="button" href="https://album.link/i/1585490606" target="_blank">Listen</a>
+        </div>
+      </div>
+      <!-- Jon Vinyl – Don't Care -->
+      <div class="card">
+        <a href="https://song.link/i/1604296095" target="_blank"><img src="covers/dont-care.jpg" alt="Jon Vinyl – Don't Care"></a>
+        <div class="card-info">
+          <p><strong>Jon Vinyl – Don't Care</strong></p>
+          <a class="button" href="https://song.link/i/1604296095" target="_blank">Listen</a>
+        </div>
+      </div>
+      <!-- Joyia – Pink Skies -->
+      <div class="card">
+        <a href="https://song.link/i/1673499251" target="_blank"><img src="covers/pink-skies.jpg" alt="Joyia – Pink Skies"></a>
+        <div class="card-info">
+          <p><strong>Joyia – Pink Skies</strong></p>
+          <a class="button" href="https://song.link/i/1673499251" target="_blank">Listen</a>
+        </div>
+      </div>
+      <!-- Joyia – Blue Bird -->
+      <div class="card">...
+      </div>
+      <!-- Kadiri – Endless Nights (EP) -->
+      <div class="card">...
+      </div>
+      <!-- Kiana – September -->
+      <div class="card">...
+      </div>
+      <!-- Kiana – Close To Me -->
+      <div class="card">...
+      </div>
+      <!-- Kiana – Chaos -->
+      <div class="card">...
+      </div>
+      <!-- YL Vision – 703 (EP) -->
+      <div class="card">...
+      </div>
+      <!-- Yuki Dreams Again – Star People (EP) -->
+      <div class="card">...
+      </div>
+      <!-- RSY – True -->
+      <div class="card">...
+      </div>
+      <!-- Su – Vantablack II -->
+      <div class="card">...
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© Arham. All rights reserved.</p>
+  </footer>
+</body>
+</html>

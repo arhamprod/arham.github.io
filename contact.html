@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Arham</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #000;
+      color: #fff;
+      line-height: 1.6;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      gap: 2em;
+      padding: 1em;
+      z-index: 100;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      text-transform: uppercase;
+      transition: opacity 0.3s ease;
+    }
+    nav a:hover { opacity: 0.7; }
+    header { padding-top: 6em; text-align: center; }
+    h1 {
+      margin-bottom: 1em;
+      font-size: 2.5em;
+      font-weight: 600;
+    }
+    section {
+      padding: 4em 2em;
+      max-width: 600px;
+      margin: auto;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      text-align: center;
+    }
+    .social-icons {
+      margin-top: 1em;
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+    }
+    .social-icons img {
+      width: 40px;
+      vertical-align: middle;
+    }
+    footer {
+      text-align: center;
+      padding: 2em;
+      background: #000;
+      color: #aaa;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    @media(max-width:600px){
+      nav { flex-direction: column; gap: 1em; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="releases.html">Releases</a>
+    <a href="discography.html">Discography</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <header>
+    <h1>Contact</h1>
+  </header>
+  <section>
+    <p><a href="mailto:arhamprod@gmail.com" style="color:#fff; font-weight:600; text-transform:uppercase;">arhamprod@gmail.com</a></p>
+    <div class="social-icons">
+      <a href="https://soundcloud.com/arhamprod" target="_blank"><img src="soundcloud-logo-white.png" alt="SoundCloud"></a>
+      <a href="https://www.youtube.com/@arham2906" target="_blank"><img src="Youtube_logo.png" alt="YouTube"></a>
+    </div>
+  </section>
+  <footer>
+    <p>© Arham. All rights reserved.</p>
+  </footer>
+</body>
+</html>
