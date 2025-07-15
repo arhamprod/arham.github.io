@@ -8,6 +8,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    .navbar {
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.nav-hidden {
+  transform: translateY(-100%);
+}
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
