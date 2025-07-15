@@ -9,6 +9,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
+     .navbar {
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.nav-hidden {
+  transform: translateY(-100%);
+}
+
     html { scroll-behavior: smooth; }
     body { margin: 0; font-family: 'Inter', sans-serif; background: #000; color: #fff; line-height: 1.6; }
     nav { position: fixed; top:0; width:100%; background:rgba(0,0,0,0.5); display:flex; justify-content:center; gap:2em; padding:1em; z-index:100; }
@@ -32,19 +45,6 @@
     footer { text-align:center; padding:2em; background:#000; color:#aaa; font-size:14px; font-weight:400; }
     @media(max-width:600px){ nav { flex-direction:column; gap:1em; } }
   </style>
-  .navbar {
-  transition: transform 0.3s ease-in-out;
-  will-change: transform;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100;
-}
-
-.nav-hidden {
-  transform: translateY(-100%);
-}
-
 </head>
 <body>
   <nav class="navbar">
