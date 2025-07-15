@@ -11,6 +11,19 @@
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-…snip…" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
+    .navbar {
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.nav-hidden {
+  transform: translateY(-100%);
+}
+
     /* Smooth scroll */
     html { scroll-behavior: smooth; }
 
@@ -182,7 +195,7 @@
     </video>
   </div>
 
-  <nav>
+  <nav class="navbar">
     <a href="index.html">Home</a>
     <a href="releases.html">Releases</a>
     <a href="discography.html">Discography</a>
@@ -217,5 +230,36 @@
   <footer>
     <p>© Arham. All rights reserved.</p>
   </footer>
+  <script>
+  const navbar = document.querySelector('.navbar');
+  let lastScrollY = window.scrollY;
+  let showNavTimeout;
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    const scrollingUp = currentScrollY < lastScrollY;
+    const atTop = currentScrollY <= 10;
+    const atBottom = (window.innerHeight + currentScrollY) >= (document.body.offsetHeight - 10);
+
+    if (atTop) {
+      clearTimeout(showNavTimeout);
+      navbar.classList.remove('nav-hidden');
+    }
+
+    if (!scrollingUp && !atTop) {
+      clearTimeout(showNavTimeout);
+      navbar.classList.add('nav-hidden');
+    }
+
+    if (scrollingUp && !atBottom && !atTop) {
+      clearTimeout(showNavTimeout);
+      showNavTimeout = setTimeout(() => {
+        navbar.classList.remove('nav-hidden');
+      }, 500);
+    }
+
+    lastScrollY = currentScrollY;
+  });
+</script>
 </body>
 </html>
