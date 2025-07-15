@@ -142,13 +142,15 @@
 
   window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
-    const scrollDirectionDown = currentScrollY > lastScrollY;
-    const nearBottom = (window.innerHeight + currentScrollY) >= (document.body.offsetHeight - 10);
+    const scrollDirectionUp = currentScrollY < lastScrollY;
+    const atBottom = (window.innerHeight + currentScrollY) >= (document.body.offsetHeight - 10);
 
-    if (scrollDirectionDown && !nearBottom) {
-      navbar.classList.add('nav-hidden');  // hide nav
-    } else {
-      navbar.classList.remove('nav-hidden');  // show nav
+    if (scrollDirectionUp && !atBottom) {
+      // You're scrolling up and not near the bottom — show nav
+      navbar.classList.remove('nav-hidden');
+    } else if (!scrollDirectionUp) {
+      // You're scrolling down — hide nav
+      navbar.classList.add('nav-hidden');
     }
 
     lastScrollY = currentScrollY;
