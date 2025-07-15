@@ -4,95 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Discography | Arham</title>
-  <!-- Inter font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #000;
-      color: #fff;
-      line-height: 1.6;
-    }
-    nav {
-      position: fixed;
-      top: 0; width: 100%;
-      background: rgba(0,0,0,0.5);
-      display: flex; justify-content: center;
-      gap: 2em; padding: 1em; z-index: 100;
-    }
-    nav a {
-      color: #fff; text-decoration: none;
-      font-weight: 600; font-size: 16px;
-      text-transform: uppercase;
-      transition: opacity 0.3s ease;
-    }
-    nav a:hover { opacity: 0.7; }
-    header {
-      padding-top: 6em; text-align: center;
-    }
-    header h1 {
-      margin-bottom: 1em;
-      font-size: 2.5em; font-weight: 600;
-    }
-    section {
-      padding: 4em 2em;
-      max-width: 1100px; margin: auto;
-      background: rgba(0,0,0,0.3);
-      border-radius: 12px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-      gap: 2em;
-    }
-    .card {
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 16px; overflow: hidden;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease, background 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      background: rgba(255,255,255,0.2);
-    }
-    .card img {
-      width: 100%; display: block;
-    }
-    .card-info { padding: 1em; }
-    .card-info p {
-      margin: 0.5em 0; font-weight: 600;
-    }
-    .button {
-      display: inline-block;
-      margin-top: 0.5em;
-      padding: 0.5em 1em;
-      color: #fff;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: 600;
-      text-transform: uppercase;
-      font-size: 14px;
-      transition: transform 0.2s ease, opacity 0.3s ease;
-    }
-    .button:hover {
-      transform: translateY(-2px);
-      opacity: 0.85;
-    }
-    footer {
-      text-align: center; padding: 2em;
-      background: #000; color: #aaa;
-      font-size: 14px; font-weight: 400;
-    }
-    @media(max-width:600px){
-      nav { flex-direction: column; gap: 1em; }
-    }
+    body { margin: 0; font-family: 'Inter', sans-serif; background: #000; color: #fff; line-height: 1.6; }
+    nav { position: fixed; top:0; width:100%; background:rgba(0,0,0,0.5); display:flex; justify-content:center; gap:2em; padding:1em; z-index:100; }
+    nav a { color:#fff; text-decoration:none; font-weight:600; font-size:16px; text-transform:uppercase; transition:opacity .3s; }
+    nav a:hover { opacity:.7; }
+    header { padding-top:6em; text-align:center; }
+    header h1 { margin-bottom:1em; font-size:2.5em; font-weight:600; }
+    section { padding:4em 2em; max-width:1100px; margin:auto; background:rgba(0,0,0,0.3); border-radius:12px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:2em; }
+    .card { background:rgba(255,255,255,0.1); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.2); border-radius:16px; overflow:hidden; text-align:center; box-shadow:0 4px 8px rgba(0,0,0,0.2); transition:transform .3s ease, background .3s ease; }
+    .card:hover { transform:translateY(-5px); background:rgba(255,255,255,0.2); }
+    .card img { width:100%; display:block; }
+    .card-info { padding:1em; }
+    .card-info p { margin:.5em 0; font-weight:600; }
+    .button { display:inline-block; margin-top:.5em; padding:.5em 1em; color:#fff; border-radius:4px; text-decoration:none; font-weight:600; text-transform:uppercase; font-size:14px; transition:transform .2s ease, opacity .3s ease; }
+    .button:hover { transform:translateY(-2px); opacity:.85; }
+    footer { text-align:center; padding:2em; background:#000; color:#aaa; font-size:14px; font-weight:400; }
+    @media(max-width:600px){ nav { flex-direction:column; gap:1em; } }
   </style>
 </head>
 <body>
@@ -103,13 +36,11 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <header>
-    <h1>Full Discography</h1>
-  </header>
+  <header><h1>Full Discography</h1></header>
 
   <section>
     <div class="grid">
-      <!-- 1. PLAZA – Nocturnes -->
+      <!-- 1. Nocturnes (Blue) -->
       <div class="card">
         <a href="https://album.link/i/1585490606" target="_blank">
           <img src="covers/nocturnes.jpg" alt="PLAZA – Nocturnes">
@@ -121,7 +52,7 @@
         </div>
       </div>
 
-      <!-- 2. Jon Vinyl – Don't Care -->
+      <!-- 2. Don't Care (Gold) -->
       <div class="card">
         <a href="https://song.link/i/1604296095" target="_blank">
           <img src="covers/dont-care.jpg" alt="Jon Vinyl – Don't Care">
@@ -133,7 +64,7 @@
         </div>
       </div>
 
-      <!-- 3. Joyia – Pink Skies -->
+      <!-- 3. Pink Skies (Hot Pink) -->
       <div class="card">
         <a href="https://song.link/i/1673499251" target="_blank">
           <img src="covers/pink-skies.jpg" alt="Joyia – Pink Skies">
@@ -145,7 +76,7 @@
         </div>
       </div>
 
-      <!-- 4. Joyia – Blue Bird -->
+      <!-- 4. Blue Bird (Royal Blue) -->
       <div class="card">
         <a href="https://song.link/i/1667588033" target="_blank">
           <img src="covers/blue-bird.jpg" alt="Joyia – Blue Bird">
@@ -157,7 +88,7 @@
         </div>
       </div>
 
-      <!-- 5. Kadiri – Endless Nights (EP) -->
+      <!-- 5. Endless Nights (Purple) -->
       <div class="card">
         <a href="https://album.link/i/1648551381" target="_blank">
           <img src="covers/endless-nights.jpg" alt="Kadiri – Endless Nights">
@@ -169,7 +100,7 @@
         </div>
       </div>
 
-      <!-- 6. Kiana – September -->
+      <!-- 6. September (Orange) -->
       <div class="card">
         <a href="https://song.link/i/1543998085" target="_blank">
           <img src="covers/september.jpg" alt="Kiana – September">
@@ -181,7 +112,7 @@
         </div>
       </div>
 
-      <!-- 7. Kiana – Close To Me -->
+      <!-- 7. Close To Me (Teal) -->
       <div class="card">
         <a href="https://song.link/i/1551855831" target="_blank">
           <img src="covers/close-to-me.jpg" alt="Kiana – Close To Me">
@@ -193,7 +124,7 @@
         </div>
       </div>
 
-      <!-- 8. Kiana – Chaos -->
+      <!-- 8. Chaos (Red) -->
       <div class="card">
         <a href="https://song.link/i/1612305388" target="_blank">
           <img src="covers/chaos.jpg" alt="Kiana – Chaos">
@@ -205,7 +136,7 @@
         </div>
       </div>
 
-      <!-- 9. YL Vision – 703 (EP) -->
+      <!-- 9. 703 (Slate) -->
       <div class="card">
         <a href="https://album.link/i/1557183219" target="_blank">
           <img src="covers/703.jpg" alt="YL Vision – 703">
@@ -217,7 +148,7 @@
         </div>
       </div>
 
-      <!-- 10. Yuki Dreams Again – Star People (EP) -->
+      <!-- 10. Star People (Lavender) -->
       <div class="card">
         <a href="https://album.link/i/1791767263" target="_blank">
           <img src="covers/star-people.jpg" alt="Yuki Dreams Again – Star People">
@@ -229,9 +160,9 @@
         </div>
       </div>
 
-      <!-- 11. RSY – True -->
+      <!-- 11. True (Deep Red) -->
       <div class="card">
-        <a href="https://song.link/i/1745354651" target="_blank">
+        <a href="https://song.link/i/1725354651" target="_blank">
           <img src="covers/true.jpg" alt="RSY – True">
         </a>
         <div class="card-info">
@@ -241,7 +172,7 @@
         </div>
       </div>
 
-      <!-- 12. Su – Vantablack II -->
+      <!-- 12. Vantablack II (Charcoal) -->
       <div class="card">
         <a href="https://album.link/i/1785838104" target="_blank">
           <img src="covers/vantablack-ii.jpg" alt="Su – Vantablack II">
