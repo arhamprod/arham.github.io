@@ -4,9 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Connect | Arham</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a2c5b5e081.js" crossorigin="anonymous"></script>
+  <!-- Inter font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-…snip…" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
+    /* Smooth scroll */
+    html { scroll-behavior: smooth; }
+
+    /* Ensure the page always fills the viewport */
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
@@ -17,97 +25,111 @@
       min-height: 100vh;
     }
 
-    nav {
+    /* Video background */
+    .video-container {
       position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      display: flex;
-      justify-content: center;
-      gap: 2em;
-      padding: 1em;
-      z-index: 100;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+    .video-container video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: brightness(40%);
+      pointer-events: none;
     }
 
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0; width: 100%;
+      background: rgba(0,0,0,0.5);
+      display: flex; justify-content: center; gap: 2em;
+      padding: 1em; z-index: 100;
+    }
     nav a {
       color: #fff;
       text-decoration: none;
-      font-weight: 700;
+      font-weight: 600;
       text-transform: uppercase;
-      font-size: 15px;
+      transition: opacity 0.3s ease;
     }
+    nav a:hover { opacity: 0.7; }
 
+    /* Page heading */
     header {
       padding-top: 7em;
       text-align: center;
     }
-
-    h1 {
+    header h1 {
       font-size: 2.5em;
       font-weight: 700;
+      margin: 0;
     }
 
+    /* Contact container */
     .contact-section {
-      padding: 2em;
+      flex: 1;
       max-width: 600px;
-      margin: auto;
-      background: url('background.jpg') no-repeat center center fixed;
-      background-size: cover;
+      width: 90%;
+      margin: 2em auto;
+      background: rgba(0,0,0,0.6);
       border-radius: 12px;
-      background-blend-mode: overlay;
-      background-color: rgba(0, 0, 0, 0.7);
+      padding: 2em;
+      backdrop-filter: blur(10px);
     }
 
+    /* Form styling */
     form {
       display: flex;
       flex-direction: column;
       gap: 1em;
-      background: rgba(255,255,255,0.05);
-      padding: 2em;
-      border-radius: 12px;
-      backdrop-filter: blur(10px);
     }
-
     input, textarea {
-      padding: 0.75em;
-      border-radius: 6px;
-      border: none;
-      font-family: 'Inter', sans-serif;
+      width: 100%;
       background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 8px;
+      padding: 0.75em;
       color: #fff;
+      font-size: 1em;
+      font-family: 'Inter', sans-serif;
     }
-
-    input::placeholder, textarea::placeholder {
-      color: #aaa;
+    input::placeholder,
+    textarea::placeholder {
+      color: #ccc;
     }
-
+    /* Submit button dark red */
     button[type="submit"] {
       background-color: #8B0000;
-      color: white;
-      padding: 0.75em;
+      color: #fff;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
+      padding: 0.75em;
+      font-size: 1em;
       font-weight: 600;
       font-family: 'Inter', sans-serif;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
-
     button[type="submit"]:hover {
       background-color: #a30000;
     }
 
+    /* Direct email link */
     .direct-email {
       text-align: center;
       margin-top: 2em;
       font-size: 0.9em;
     }
-
     .direct-email a {
       color: #fff;
       font-weight: 600;
+      text-decoration: underline;
     }
 
+    /* Social icons */
     .social-icons {
       margin-top: 1.5em;
       display: flex;
@@ -115,43 +137,56 @@
       gap: 1.5em;
       font-size: 1.5em;
     }
-
     .social-icons a {
       color: #fff;
-      transition: transform 0.2s, color 0.3s;
+      transition: transform 0.3s ease, color 0.3s ease;
     }
-
     .social-icons a:hover {
-      transform: translateY(-4px);
-      color: #1DB954;
+      transform: translateY(-5px);
     }
+    /* Brand colors on hover */
+    .social-icons a[href*="soundcloud"]:hover { color: #FF5500; }
+    .social-icons a[href*="youtube"]:hover { color: #FF0000; }
+    .social-icons a[href*="instagram"]:hover { color: #E1306C; }
+    .social-icons a[href*="twitter"]:hover,
+    .social-icons a[href*="x.com"]:hover { color: #1DA1F2; }
+    .social-icons a[href*="tiktok"]:hover { color: #69C9D0; }
 
+    /* Footer pinned to bottom */
     footer {
       text-align: center;
-      padding: 2em;
+      padding: 1.5em;
       background: #000;
       color: #aaa;
+      font-size: 14px;
       margin-top: auto;
     }
 
-    @media (max-width: 600px) {
+    /* Mobile adjustments */
+    @media(max-width:600px) {
       nav {
         flex-direction: column;
         gap: 1em;
       }
-
-      h1 {
+      header h1 {
         font-size: 2em;
       }
     }
   </style>
 </head>
 <body>
+  <div class="video-container">
+    <video autoplay muted loop playsinline>
+      <source src="background.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
   <nav>
-    <a href="index.html#about">Home</a>
+    <a href="index.html">Home</a>
     <a href="releases.html">Releases</a>
     <a href="discography.html">Discography</a>
-    <a href="contact.html">Contact</a>
+    <a href="contact.html">Connect</a>
   </nav>
 
   <header>
