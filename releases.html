@@ -32,9 +32,22 @@
     footer { text-align:center; padding:2em; background:#000; color:#aaa; font-size:14px; font-weight:400; }
     @media(max-width:600px){ nav { flex-direction:column; gap:1em; } }
   </style>
+  .navbar {
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.nav-hidden {
+  transform: translateY(-100%);
+}
+
 </head>
 <body>
-  <nav>
+  <nav class="navbar">
     <a href="index.html">Home</a>
     <a href="releases.html">Releases</a>
     <a href="discography.html">Discography</a>
@@ -157,5 +170,36 @@
   </section>
 
   <footer><p>© Arham. All rights reserved.</p></footer>
+  <script>
+  const navbar = document.querySelector('.navbar');
+  let lastScrollY = window.scrollY;
+  let showNavTimeout;
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    const scrollingUp = currentScrollY < lastScrollY;
+    const atTop = currentScrollY <= 10;
+    const atBottom = (window.innerHeight + currentScrollY) >= (document.body.offsetHeight - 10);
+
+    if (atTop) {
+      clearTimeout(showNavTimeout);
+      navbar.classList.remove('nav-hidden');
+    }
+
+    if (!scrollingUp && !atTop) {
+      clearTimeout(showNavTimeout);
+      navbar.classList.add('nav-hidden');
+    }
+
+    if (scrollingUp && !atBottom && !atTop) {
+      clearTimeout(showNavTimeout);
+      showNavTimeout = setTimeout(() => {
+        navbar.classList.remove('nav-hidden');
+      }, 500);
+    }
+
+    lastScrollY = currentScrollY;
+  });
+</script>
 </body>
 </html>
