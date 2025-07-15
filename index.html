@@ -107,7 +107,7 @@
       Your browser does not support the video tag.
     </video>
   </div>
-  <nav>
+  <nav class="navbar">
     <a href="index.html">Home</a>
     <a href="releases.html">Releases</a>
     <a href="discography.html">Discography</a>
@@ -124,5 +124,18 @@
   <footer>
     <p>© Arham. All rights reserved.</p>
   </footer>
+  <script>
+  let lastScrollY = window.scrollY;
+  const navbar = document.querySelector('.navbar');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > lastScrollY) {
+      navbar.classList.add('nav-hidden'); // Hide on scroll down
+    } else {
+      navbar.classList.remove('nav-hidden'); // Show on scroll up
+    }
+    lastScrollY = window.scrollY;
+  });
+</script>
 </body>
 </html>
