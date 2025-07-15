@@ -137,24 +137,39 @@
     <p>© Arham. All rights reserved.</p>
   </footer>
  <script>
-  let lastScrollY = window.scrollY;
   const navbar = document.querySelector('.navbar');
+  let lastScrollY = window.scrollY;
+  let showNavTimeout;
 
   window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
-    const scrollDirectionUp = currentScrollY < lastScrollY;
+    const scrollingUp = currentScrollY < lastScrollY;
+    const atTop = currentScrollY <= 10;
     const atBottom = (window.innerHeight + currentScrollY) >= (document.body.offsetHeight - 10);
 
-    if (scrollDirectionUp && !atBottom) {
-      // You're scrolling up and not near the bottom — show nav
+    // Always show nav at very top
+    if (atTop) {
+      clearTimeout(showNavTimeout);
       navbar.classList.remove('nav-hidden');
-    } else if (!scrollDirectionUp) {
-      // You're scrolling down — hide nav
+    }
+
+    // Scrolling down — hide nav immediately
+    if (!scrollingUp && !atTop) {
+      clearTimeout(showNavTimeout); // cancel any pending show
       navbar.classList.add('nav-hidden');
+    }
+
+    // Scrolling up — delay showing nav (unless at bottom)
+    if (scrollingUp && !atBottom && !atTop) {
+      clearTimeout(showNavTimeout);
+      showNavTimeout = setTimeout(() => {
+        navbar.classList.remove('nav-hidden');
+      }, 500); // adjust delay here (500ms)
     }
 
     lastScrollY = currentScrollY;
   });
 </script>
+
 </body>
 </html>
