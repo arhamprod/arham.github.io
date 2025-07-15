@@ -1,190 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Connect | Arham</title>
-  <!-- Inter Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- FontAwesome CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2c5b5e081.js" crossorigin="anonymous"></script>
   <style>
-    button[type="submit"] {
-  background-color: #8B0000; /* dark red */
-  color: white;
-  padding: 0.75em 1.5em;
-  border: none;
-  border-radius: 4px;
-  font-weight: 600;
-  font-family: 'Inter', sans-serif;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button[type="submit"]:hover {
-  background-color: #a30000; /* slightly brighter red on hover */
-}
-
-    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
       background: #000;
       color: #fff;
-      line-height: 1.6;
-    }
-
-    .video-container {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%;
-      overflow: hidden; z-index: -1;
-    }
-
-    .video-container video {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     nav {
-      position: fixed; top:0; width:100%;
-      background:rgba(0,0,0,0.5);
-      display:flex; justify-content:center; gap:2em;
-      padding:1em; z-index:100;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      gap: 2em;
+      padding: 1em;
+      z-index: 100;
     }
 
     nav a {
-      color:#fff; text-decoration:none;
-      font-weight:600; font-size:16px;
-      text-transform:uppercase;
-      transition:opacity .3s;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 15px;
     }
-
-    nav a:hover { opacity:.7; }
 
     header {
-      padding-top:6em; text-align:center;
+      padding-top: 7em;
+      text-align: center;
     }
 
-    header h1 {
-      font-size:2.5em; font-weight:700;
-      margin-bottom: 0.5em;
+    h1 {
+      font-size: 2.5em;
+      font-weight: 700;
     }
 
-    section {
-      padding:4em 2em; max-width:800px; margin:auto;
-      background:rgba(0,0,0,0.3);
-      border-radius:12px; text-align:center;
+    .contact-section {
+      padding: 2em;
+      max-width: 600px;
+      margin: auto;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      border-radius: 12px;
+      background-blend-mode: overlay;
+      background-color: rgba(0, 0, 0, 0.7);
     }
 
     form {
       display: flex;
       flex-direction: column;
       gap: 1em;
-      max-width: 600px;
-      margin: 0 auto 2em auto;
+      background: rgba(255,255,255,0.05);
+      padding: 2em;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
     }
 
     input, textarea {
-      background:rgba(255,255,255,0.1);
-      border:1px solid rgba(255,255,255,0.3);
-      color:#fff;
-      padding:0.75em;
-      border-radius:8px;
-      font-family:'Inter', sans-serif;
-      font-size:1em;
-      resize:none;
+      padding: 0.75em;
+      border-radius: 6px;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
     }
 
-    button {
-      padding:0.75em; background:#1DB954;
-      color:#fff; border:none;
-      border-radius:8px; cursor:pointer;
-      font-weight:600; font-size:1em;
-      transition:opacity .3s;
+    input::placeholder, textarea::placeholder {
+      color: #aaa;
     }
 
-    button:hover { opacity:.8; }
+    button[type="submit"] {
+      background-color: #8B0000;
+      color: white;
+      padding: 0.75em;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #a30000;
+    }
+
+    .direct-email {
+      text-align: center;
+      margin-top: 2em;
+      font-size: 0.9em;
+    }
+
+    .direct-email a {
+      color: #fff;
+      font-weight: 600;
+    }
 
     .social-icons {
+      margin-top: 1.5em;
       display: flex;
       justify-content: center;
       gap: 1.5em;
-      padding-top: 1em;
+      font-size: 1.5em;
     }
 
     .social-icons a {
       color: #fff;
-      font-size: 2em;
-      transition: transform 0.3s ease, color 0.3s ease;
+      transition: transform 0.2s, color 0.3s;
     }
 
     .social-icons a:hover {
-      transform: translateY(-5px);
+      transform: translateY(-4px);
+      color: #1DB954;
     }
-
-    .social-icons a[href*="soundcloud"]:hover { color: #FF5500; }
-    .social-icons a[href*="youtube"]:hover { color: #FF0000; }
-    .social-icons a[href*="instagram"]:hover { color: #E1306C; }
-    .social-icons a[href*="twitter"]:hover,
-    .social-icons a[href*="x.com"]:hover { color: #1DA1F2; }
-    .social-icons a[href*="tiktok"]:hover { color: #FFFFFF; }
 
     footer {
-      text-align:center; padding:2em;
-      background:#000; color:#aaa;
-      font-size:14px; font-weight:400;
+      text-align: center;
+      padding: 2em;
+      background: #000;
+      color: #aaa;
+      margin-top: auto;
     }
 
-    @media(max-width:600px){
-      nav { flex-direction:column; gap:1em; }
-      .social-icons { flex-wrap: wrap; }
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 1em;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
     }
   </style>
 </head>
 <body>
-<div class="video-container">
-  <video autoplay muted loop playsinline webkit-playsinline>
-    <source src="background.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
+  <nav>
+    <a href="index.html#about">Home</a>
+    <a href="releases.html">Releases</a>
+    <a href="discography.html">Discography</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="releases.html">Releases</a>
-  <a href="discography.html">Discography</a>
-  <a href="contact.html">Contact</a>
-</nav>
+  <header>
+    <h1>Connect</h1>
+  </header>
 
-<header>
-  <h1>Connect</h1>
-</header>
+  <section class="contact-section">
+    <form action="https://formspree.io/f/mrblgewk" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
 
-<section>
-  <form action="https://formspree.io/f/mrblgewk" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
+    <div class="direct-email">
+      <p>Email me directly at: <a href="mailto:arhamprod@gmail.com">arhamprod@gmail.com</a></p>
+    </div>
 
-  <p>Email me directly at: <a href="mailto:arhamprod@gmail.com" style="color:#fff;">arhamprod@gmail.com</a></p>
+    <div class="social-icons">
+      <a href="https://soundcloud.com/arhamprod" target="_blank"><i class="fab fa-soundcloud"></i></a>
+      <a href="https://www.youtube.com/@arham2906" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.instagram.com/arhamprod/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://twitter.com/arhamprod" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://www.tiktok.com/@arhamprod" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+  </section>
 
-  <div class="social-icons">
-    <a href="https://soundcloud.com/arhamprod" target="_blank"><i class="fa-brands fa-soundcloud"></i></a>
-    <a href="https://www.youtube.com/@arham2906" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-    <a href="https://www.instagram.com/yourusername" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-    <a href="https://x.com/arhamprod" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-    <a href="https://www.tiktok.com/@arhamprod" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-  </div>
-</section>
-
-<footer>
-  <p>© Arham. All rights reserved.</p>
-</footer>
-
+  <footer>
+    <p>© Arham. All rights reserved.</p>
+  </footer>
 </body>
 </html>
