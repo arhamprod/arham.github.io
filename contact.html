@@ -184,6 +184,8 @@
 
     /* Mobile adjustments */
     @media(max-width:600px) {
+      .form-wrapper {
+        padding: 0 24px;
       nav {
         flex-direction: column;
         gap: 1em;
@@ -214,7 +216,7 @@
   </header>
 
   <section class="contact-section">
-    <div class="form wrapper">
+    <div class="form-wrapper">
      <form action="https://formspree.io/f/mrblgewk" method="POST">
        <input type="text" name="name" placeholder="Your Name" required />
        <input type="email" name="email" placeholder="Your Email" required />
