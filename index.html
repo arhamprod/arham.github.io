@@ -3,19 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Arham | Producer & Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
-    /* Smooth scroll */
     html { scroll-behavior: smooth; }
     html, body {
       overflow-x: hidden;
       width: 100%;
-}
-    /* Push content below the 60px nav */
+    }
+
     body {
       margin: 0;
       padding-top: 60px;
@@ -25,48 +24,47 @@
       line-height: 1.6;
     }
 
-    /* Video background */
     .video-container {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      z-index: -1; overflow: hidden;
+      z-index: -1;
+      overflow: hidden;
     }
+
     .video-container video {
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       filter: brightness(40%);
       pointer-events: none;
     }
 
-    /* NAVIGATION */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      height: 60px;              /* locked nav height */
-      line-height: 60px;         /* vertically center links */
+      height: 60px;
+      line-height: 60px;
       background: rgba(0,0,0,0.5);
       display: flex;
       justify-content: center;
-      flex-wrap: wrap; /* allows wrappin on smaller screens */
+      flex-wrap: wrap;
       gap: 2em;
-      padding: 0;                /* removed old padding */
+      padding: 0;
       z-index: 100;
       transition: transform 0.3s ease-in-out;
       box-sizing: border-box;
       box-shadow: 0 2px 8px rgba(0,0,0,0.4);
     }
-/* ensure nav content doesn't hug the very edge on iOS */
-@supports(padding: max(0px)) {
-  nav {
-    /* fall back to 16px on browsers that don't support env() */
-    padding-left: max(8px, env(safe-area-inset-left));
-    padding-right: max(8px, env(safe-area-inset-right));
-  }
-}
 
-    /* Slide-up class */
+    @supports(padding: max(0px)) {
+      nav {
+        padding-left: max(8px, env(safe-area-inset-left));
+        padding-right: max(8px, env(safe-area-inset-right));
+      }
+    }
+
     .navbar.nav-hidden {
       transform: translateY(-100%);
     }
@@ -80,16 +78,17 @@
       transition: transform 0.2s ease, color 0.2s ease;
       padding: 0 8px;
     }
+
     nav a:hover {
       transform: scale(1.1);
     }
+
     nav a.active {
       color: #feb47b;
       border-bottom: 2px solid #feb47b;
       padding-bottom: 4px;
     }
 
-    /* Page header */
     header {
       height: 80vh;
       display: flex;
@@ -98,11 +97,13 @@
       align-items: center;
       text-align: center;
     }
+
     header h1 {
       font-size: 4em;
       margin: 0;
       font-weight: 700;
     }
+
     header p {
       font-size: 1.5em;
       margin-top: 0.5em;
@@ -112,7 +113,6 @@
       font-weight: 700;
     }
 
-    /* About section */
     section {
       padding: 4em 2em;
       max-width: 1000px;
@@ -120,13 +120,13 @@
       background: rgba(0, 0, 0, 0.3);
       border-radius: 12px;
     }
+
     h2 {
       margin-bottom: 0.5em;
       font-size: 1.75em;
       font-weight: 600;
     }
 
-    /* Footer */
     footer {
       text-align: center;
       padding: 2em;
@@ -135,38 +135,50 @@
       font-size: 14px;
       font-weight: 400;
     }
-.menu-toggle {
-  display: none;
-  font-size: 28px;
-  position: fixed;
-  top: 16px;
-  right: 20px;
-  z-index: 101;
-  color: #fff;
-  cursor: pointer;
-}
 
-/* Hide nav by default on mobile */
-@media(max-width: 600px) {
-  .navbar {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5em;
-    height: auto;
-    padding: 1em 1em;
-  }
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      z-index: 101;
+      color: #fff;
+      cursor: pointer;
+    }
 
-  nav a {
-    display: block;
-    padding: 12px 0;
-    font-size: 16px;
-  }
+    /* Mobile styles */
+    @media(max-width: 600px) {
+      .navbar {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        background: rgba(0,0,0,0.95);
+        width: 100%;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        padding: 1em 0;
+      }
 
-  header h1 {
-    font-size: 2.5em;
-  }
-}
+      .navbar.show {
+        display: flex;
+      }
 
+      .menu-toggle {
+        display: block;
+      }
+
+      nav a {
+        display: block;
+        padding: 12px 0;
+        font-size: 16px;
+      }
+
+      header h1 {
+        font-size: 2.5em;
+      }
+    }
   </style>
 </head>
 <body>
@@ -176,7 +188,9 @@
       Your browser does not support the video tag.
     </video>
   </div>
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
   <nav class="navbar">
     <a href="index.html" class="active">Home</a>
     <a href="releases.html">Releases</a>
@@ -209,17 +223,16 @@
       const atTop = currentScrollY <= 10;
       const atBottom = (window.innerHeight + currentScrollY) >= (document.body.offsetHeight - 10);
 
-      // Always show at top
       if (atTop) {
         clearTimeout(showNavTimeout);
         navbar.classList.remove('nav-hidden');
       }
-      // Hide immediately on scroll down
+
       if (!scrollingUp && !atTop) {
         clearTimeout(showNavTimeout);
         navbar.classList.add('nav-hidden');
       }
-      // Show with delay on scroll up (unless at bottom)
+
       if (scrollingUp && !atBottom && !atTop) {
         clearTimeout(showNavTimeout);
         showNavTimeout = setTimeout(() => {
@@ -229,18 +242,16 @@
 
       lastScrollY = currentScrollY;
     });
-  </script>
-  <script>
-  function toggleMenu() {
-    const navbar = document.querySelector('.navbar');
-    navbar.classList.toggle('show');
-  }
-    document.querySelectorAll('nav a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.querySelector('.navbar').classList.remove('show');
-  });
-});
 
-</script>
+    function toggleMenu() {
+      navbar.classList.toggle('show');
+    }
+
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        navbar.classList.remove('show');
+      });
+    });
+  </script>
 </body>
 </html>
