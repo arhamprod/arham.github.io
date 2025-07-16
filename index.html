@@ -4,16 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arham | Producer & Engineer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     /* Smooth scroll */
     html { scroll-behavior: smooth; }
 
+    /* Push content below the 60px nav */
     body {
       margin: 0;
-      padding-top: 60px;               /* push content below the 60px nav */
+      padding-top: 60px;
       font-family: 'Inter', sans-serif;
       background: #000;
       color: #fff;
@@ -25,15 +26,13 @@
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      z-index: -1;
-      overflow: hidden;
+      z-index: -1; overflow: hidden;
     }
     .video-container video {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
-      pointer-events: none;
       filter: brightness(40%);
+      pointer-events: none;
     }
 
     /* NAVIGATION */
@@ -41,16 +40,22 @@
       position: fixed;
       top: 0;
       width: 100%;
-      height: 60px;                    /* lock height */
-      line-height: 60px;               /* vertically center links */
-      background: rgba(0, 0, 0, 0.5);
+      height: 60px;              /* locked nav height */
+      line-height: 60px;         /* vertically center links */
+      background: rgba(0,0,0,0.5);
       display: flex;
       justify-content: center;
       gap: 2em;
-      padding: 0;                      /* remove old padding */
+      padding: 0;                /* removed old padding */
       z-index: 100;
       transition: transform 0.3s ease-in-out;
     }
+
+    /* Slide-up class */
+    .navbar.nav-hidden {
+      transform: translateY(-100%);
+    }
+
     nav a {
       color: #fff;
       text-decoration: none;
@@ -60,12 +65,12 @@
       transition: transform 0.2s ease, color 0.2s ease;
     }
     nav a:hover {
-      transform: scale(1.1);           /* hover “pop” */
+      transform: scale(1.1);
     }
     nav a.active {
-      color: #feb47b;                  /* accent color */
+      color: #feb47b;
       border-bottom: 2px solid #feb47b;
-      padding-bottom: 4px;             /* lift text slightly */
+      padding-bottom: 4px;
     }
 
     /* Page header */
@@ -160,20 +165,24 @@
       const atTop = currentScrollY <= 10;
       const atBottom = (window.innerHeight + currentScrollY) >= (document.body.offsetHeight - 10);
 
+      // Always show at top
       if (atTop) {
         clearTimeout(showNavTimeout);
         navbar.classList.remove('nav-hidden');
       }
+      // Hide immediately on scroll down
       if (!scrollingUp && !atTop) {
         clearTimeout(showNavTimeout);
         navbar.classList.add('nav-hidden');
       }
+      // Show with delay on scroll up (unless at bottom)
       if (scrollingUp && !atBottom && !atTop) {
         clearTimeout(showNavTimeout);
         showNavTimeout = setTimeout(() => {
           navbar.classList.remove('nav-hidden');
         }, 500);
       }
+
       lastScrollY = currentScrollY;
     });
   </script>
