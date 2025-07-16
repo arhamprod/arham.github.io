@@ -55,6 +55,7 @@
       z-index: 100;
       transition: transform 0.3s ease-in-out;
       box-sizing: border-box;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
     }
 /* ensure nav content doesn't hug the very edge on iOS */
 @supports(padding: max(0px)) {
@@ -134,9 +135,20 @@
       font-size: 14px;
       font-weight: 400;
     }
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  position: fixed;
+  top: 16px;
+  right: 20px;
+  z-index: 101;
+  color: #fff;
+  cursor: pointer;
+}
 
-    @media(max-width:600px){
-  nav {
+/* Hide nav by default on mobile */
+@media(max-width: 600px) {
+  .navbar {
     flex-direction: column;
     align-items: center;
     gap: 0.5em;
@@ -146,8 +158,8 @@
 
   nav a {
     display: block;
-    padding: 8px 0;
-    font-size: 14px;
+    padding: 12px 0;
+    font-size: 16px;
   }
 
   header h1 {
@@ -164,7 +176,7 @@
       Your browser does not support the video tag.
     </video>
   </div>
-
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
   <nav class="navbar">
     <a href="index.html" class="active">Home</a>
     <a href="releases.html">Releases</a>
@@ -218,5 +230,17 @@
       lastScrollY = currentScrollY;
     });
   </script>
+  <script>
+  function toggleMenu() {
+    const navbar = document.querySelector('.navbar');
+    navbar.classList.toggle('show');
+  }
+    document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelector('.navbar').classList.remove('show');
+  });
+});
+
+</script>
 </body>
 </html>
