@@ -3,33 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Arham | Producer & Engineer</title>
+  <!-- Inter font -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"/>
   <style>
-    html { scroll-behavior: smooth; }
-    html, body {
-      overflow-x: hidden;
-      width: 100%;
+    /* ———————————————————————————————— */
+    /* BASE STYLES */
+    /* ———————————————————————————————— */
+    html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
+    body {
       margin: 0;
-      padding: 0;
+      padding-top: 60px;                /* push content below fixed nav */
       font-family: 'Inter', sans-serif;
       background: #000;
       color: #fff;
       line-height: 1.6;
     }
 
-    body {
-      padding-top: 60px; /* offset for fixed navbar */
-    }
-
+    /* VIDEO BACKGROUND (always behind) */
     .video-container {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      z-index: -1; overflow: hidden;
+      z-index: -1;
+      overflow: hidden;
     }
     .video-container video {
       width: 100%; height: 100%;
@@ -38,89 +39,64 @@
       pointer-events: none;
     }
 
-    /* Hamburger icon */
-    .menu-toggle {
-      display: none;
-      font-size: 28px;
+    /* ———————————————————————————————— */
+    /* NAVIGATION (Desktop + Mobile) */
+    /* ———————————————————————————————— */
+    nav {
       position: fixed;
-      top: 16px;
-      left: 20px; /* Moved to top left */
-      z-index: 101;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    nav.navbar {
-      position: fixed;
-      top: 0;
+      top: 0; left: 0;
       width: 100%;
-      height: 60px;
-      background: rgba(0, 0, 0, 0.5);
+      height: 60px;                    /* locked nav height */
+      line-height: 60px;               /* vertically center links */
+      background: rgba(0,0,0,0.5);
       display: flex;
       justify-content: center;
-      align-items: center;
       gap: 2em;
+      padding: 0;                      /* we'll handle safe-area insets below */
+      box-sizing: border-box;
       z-index: 100;
       transition: transform 0.3s ease-in-out;
-      box-sizing: border-box;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
     }
-
-    nav.navbar a {
+    @supports(padding: max(0px)) {
+      nav {
+        /* account for iOS notch insets */
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
+      }
+    }
+    nav a {
       color: #fff;
       text-decoration: none;
       font-weight: 600;
       font-size: 16px;
       text-transform: uppercase;
-      transition: transform 0.2s ease, color 0.2s ease;
-      padding: 0 8px;
+      padding: 0 8px;                  /* give each link its own tap area */
+      transition: transform 0.2s, color 0.2s;
     }
-
-    nav a:hover {
-      transform: scale(1.1);
-    }
-
+    nav a:hover { transform: scale(1.1); }
     nav a.active {
       color: #feb47b;
       border-bottom: 2px solid #feb47b;
       padding-bottom: 4px;
     }
 
-    .navbar.nav-hidden {
-      transform: translateY(-100%);
+    /* hide nav on scroll down, show on scroll up (shared logic) */
+    .navbar.nav-hidden { transform: translateY(-100%); }
+
+    /* HAMBURGER TOGGLE (mobile only) */
+    .menu-toggle {
+      display: none;                   /* desktop: hidden */
+      position: fixed;
+      top: 16px; left: 16px;           /* top-left corner */
+      font-size: 28px;
+      color: #fff;
+      z-index: 110;
+      cursor: pointer;
     }
 
-    /* Mobile Navigation */
-    @media (max-width: 600px) {
-      nav.navbar {
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-        background: rgba(0,0,0,0.95);
-        position: fixed;
-        top: 60px;
-        left: 0;
-        width: auto;
-        padding: 1em 1.5em;
-        border-radius: 0 8px 8px 0;
-        box-shadow: 4px 4px 12px rgba(0,0,0,0.5);
-      }
-
-      nav.navbar.show {
-        display: flex;
-      }
-
-      nav.navbar a {
-        display: block;
-        padding: 0.5em 0;
-        font-size: 16px;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-    }
-
+    /* ———————————————————————————————— */
+    /* PAGE HEADER */
+    /* ———————————————————————————————— */
     header {
       height: 80vh;
       display: flex;
@@ -129,13 +105,11 @@
       align-items: center;
       text-align: center;
     }
-
     header h1 {
       font-size: 4em;
       margin: 0;
       font-weight: 700;
     }
-
     header p {
       font-size: 1.5em;
       margin-top: 0.5em;
@@ -145,20 +119,21 @@
       font-weight: 700;
     }
 
+    /* ———————————————————————————————— */
+    /* ABOUT SECTION & FOOTER */
+    /* ———————————————————————————————— */
     section {
       padding: 4em 2em;
       max-width: 1000px;
       margin: auto;
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0,0,0,0.3);
       border-radius: 12px;
     }
-
     h2 {
       margin-bottom: 0.5em;
       font-size: 1.75em;
       font-weight: 600;
     }
-
     footer {
       text-align: center;
       padding: 2em;
@@ -167,18 +142,56 @@
       font-size: 14px;
       font-weight: 400;
     }
+
+    /* ———————————————————————————————— */
+    /* MOBILE-ONLY ADJUSTMENTS (@ ≤ 768px) */
+    /* ———————————————————————————————— */
+    @media(max-width: 768px) {
+      /* show hamburger, hide normal nav */
+      .menu-toggle { display: block; }
+      nav {
+        display: none;                 /* off-canvas by default */
+        flex-direction: column;
+        align-items: flex-start;
+        background: rgba(0,0,0,0.9);
+        width: 75%;                    /* slide-in width */
+        height: 100%;
+        top: 0; left: 0;
+        padding-top: 80px;             /* push below top bar */
+        gap: 1.5em;
+      }
+      nav.show {
+        display: flex;                 /* when toggled */
+      }
+      nav a {
+        display: block;
+        padding: 12px 24px;
+        font-size: 18px;
+      }
+    }
+
+    /* ———————————————————————————————— */
+    /* SMALLER MOBILE (@ ≤ 600px) */
+    /* ———————————————————————————————— */
+    @media(max-width: 600px) {
+      header h1 { font-size: 2.5em; }
+    }
   </style>
 </head>
+
 <body>
+  <!-- VIDEO -->
   <div class="video-container">
-    <video autoplay muted loop playsinline webkit-playsinline>
+    <video autoplay muted loop playsinline>
       <source src="background.mp4" type="video/mp4">
-      Your browser does not support the video tag.
+      Your browser doesn’t support this video.
     </video>
   </div>
 
+  <!-- HAMBURGER (mobile only) -->
   <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
+  <!-- NAVIGATION -->
   <nav class="navbar">
     <a href="index.html" class="active">Home</a>
     <a href="releases.html">Releases</a>
@@ -186,60 +199,66 @@
     <a href="contact.html">Connect</a>
   </nav>
 
+  <!-- HEADER CONTENT -->
   <header>
     <h1>Arham</h1>
     <p>Producer. Engineer. Artist.</p>
   </header>
 
+  <!-- ABOUT -->
   <section>
     <h2>About</h2>
-    <p>Arham is a Canadian music producer and audio engineer with a versatile sonic palette. From soulful melodies to hard-hitting mixes, he has contributed to works across Toronto’s emerging scene. With credits in production, mixing, and mastering, Arham’s fingerprints are on the future of music.</p>
+    <p>
+      Arham is a Canadian music producer and audio engineer with a versatile sonic palette.
+      From soulful melodies to hard-hitting mixes, he’s contributed to works across Toronto’s emerging scene.
+      With credits in production, mixing, and mastering, Arham’s fingerprints are on the future of music.
+    </p>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <p>© Arham. All rights reserved.</p>
   </footer>
 
+  <!-- SCROLL/SHOW-HIDE NAV JS -->
   <script>
     const navbar = document.querySelector('.navbar');
-    let lastScrollY = window.scrollY;
-    let showNavTimeout;
+    let lastY = window.scrollY, timeout;
 
     window.addEventListener('scroll', () => {
-      const currentScrollY = window.scrollY;
-      const scrollingUp = currentScrollY < lastScrollY;
-      const atTop = currentScrollY <= 10;
-      const atBottom = (window.innerHeight + currentScrollY) >= (document.body.offsetHeight - 10);
+      const currY = window.scrollY;
+      const atTop = currY <= 10;
+      const atBottom = window.innerHeight + currY >= document.body.offsetHeight - 10;
+      const scrollingUp = currY < lastY;
 
+      // always show at very top
       if (atTop) {
-        clearTimeout(showNavTimeout);
+        clearTimeout(timeout);
         navbar.classList.remove('nav-hidden');
       }
-
+      // hide immediately when scrolling down
       if (!scrollingUp && !atTop) {
-        clearTimeout(showNavTimeout);
+        clearTimeout(timeout);
         navbar.classList.add('nav-hidden');
       }
-
+      // show with delay when scrolling up (unless at bottom)
       if (scrollingUp && !atBottom && !atTop) {
-        clearTimeout(showNavTimeout);
-        showNavTimeout = setTimeout(() => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
           navbar.classList.remove('nav-hidden');
         }, 500);
       }
-
-      lastScrollY = currentScrollY;
+      lastY = currY;
     });
 
+    // hamburger toggle
     function toggleMenu() {
       navbar.classList.toggle('show');
     }
-
-    document.querySelectorAll('nav a').forEach(link => {
-      link.addEventListener('click', () => {
-        navbar.classList.remove('show');
-      });
-    });
+    // hide menu when you click a link (mobile)
+    document.querySelectorAll('nav a').forEach(a =>
+      a.addEventListener('click', () => navbar.classList.remove('show'))
+    );
   </script>
 </body>
 </html>
