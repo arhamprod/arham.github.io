@@ -150,23 +150,27 @@
       /* show hamburger, hide normal nav */
       .menu-toggle { display: block; }
       nav {
-        display: none;                 /* off-canvas by default */
+        display: none;
         flex-direction: column;
         align-items: flex-start;
-        background: rgba(0,0,0,0.9);
-        width: 75%;                    /* slide-in width */
-        height: 100%;
-        top: 0; left: 0;
-        padding-top: 80px;             /* push below top bar */
-        gap: 0.5em;
-      }
+        background: rgba(0, 0, 0, 0.95);
+        width: 220px;                   /* narrower and fixed width */
+        top: 60px;                      /* starts just below the hamburger */
+        left: 16px;                     /* lines up with the hamburger */
+        border-radius: 8px;             /* optional: rounded corners */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);  /* subtle shadow */
+        padding: 8px 0;                 /* small top/bottom spacing */
+        gap: 4px;                       /* tighter spacing between links */
+        z-index: 109;                   /* ensure it's behind the hamburger (110) */
+}
       nav.show {
         display: flex;                 /* when toggled */
       }
       nav a {
         display: block;
-        padding: 6px 24px;
-        font-size: 18px;
+        padding: 6px 16px;            /* tighter horizontal space */
+        font-size: 16px;              /* slightly smaller, more compact */  
+        line-height: 1.4;             /* helps prevent tall line spacing */
       }
     }
 
