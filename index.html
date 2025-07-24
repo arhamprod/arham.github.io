@@ -57,15 +57,15 @@
       z-index: 100;
       transition: transform 0.3s ease-in-out;
     }
-    /* Fade effect for navbar (used on mobile) */
-.navbar {
-  transition: opacity 0.3s;
-}
-.navbar.nav-fade {
-  opacity: 0;
-  pointer-events: none;
-}
-
+   /* Fade effect for navbar + hamburger (mobile) */
+    .navbar,
+    .menu-toggle {
+      transition: opacity 0.3s;       /* both nav and hamburger now fade */
+    }
+    .nav-fade {
+      opacity: 0 !important;          /* hide whichever element has this class */
+      pointer-events: none;
+    }
     @supports(padding: max(0px)) {
       nav {
         /* account for iOS notch insets */
@@ -171,6 +171,11 @@
         padding: 8px 0;                 /* small top/bottom spacing */
         gap: 4px;                       /* tighter spacing between links */
         z-index: 109;                   /* ensure it's behind the hamburger (110) */
+        
+        /* NEW: allow full-height mobile menu */
+        height: auto;
+        max-height: calc(100vh - 95px);
+        overflow-y: auto;
 }
       nav.show {
         display: flex;                 /* when toggled */
@@ -236,49 +241,47 @@
   <!-- SCROLL/SHOW-HIDE NAV JS -->
   <script>
     const navbar = document.querySelector('.navbar');
+    const menuToggle = document.querySelector('.menu-toggle');
     let lastY = window.scrollY, timeout;
 
     window.addEventListener('scroll', () => {
   const currY = window.scrollY;
   const atTop = currY <= 10;
-  const atBottom = window.innerHeight + currY >= document.body.offsetHeight - 10;
   const scrollingUp = currY < lastY;
+  lastY = currY;  
 
   // ---- MOBILE FADING NAV ----
   if (window.innerWidth <= 768) {
     if (!scrollingUp && !atTop) {
-      // Fade out and close menu if open
+      // Scroll down → fade out + close menu
       navbar.classList.add('nav-fade');
+      menuToggle.classList.add('nav-fade');
       navbar.classList.remove('show');
     } else {
-      // Fade in
+      // Scroll up → fade in
       navbar.classList.remove('nav-fade');
+      menuToggle.classList.remove('nav-fade');
     }
-    lastY = currY;
-    return; // Don't run rest of script on mobile
+    return; // skip desktop logic on mobile
   }
 
   // ---- DESKTOP BEHAVIOR (unchanged) ----
+  clearTimeout(timeout);
   if (atTop) {
-    clearTimeout(timeout);
     navbar.classList.remove('nav-hidden');
-  }
-  if (!scrollingUp && !atTop) {
-    clearTimeout(timeout);
+  } else if (!scrollingUp) {
+    timeout = setTimeout(() => navbar.classList.remove('nav-hidden'), 500);
+  } else {
     navbar.classList.add('nav-hidden');
   }
-  if (scrollingUp && !atBottom && !atTop) {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      navbar.classList.remove('nav-hidden');
-    }, 500);
-  }
-  lastY = currY;
 });
+
     // hamburger toggle
     function toggleMenu() {
+  // When user taps hamburger, always bring both elements back to full opacity
+  navbar.classList.remove('nav-fade');
+  menuToggle.classList.remove('nav-fade');
   navbar.classList.toggle('show');
-  navbar.classList.remove('nav-fade'); // Always make nav visible when opening
 }
     // hide menu when you click a link (mobile)
     document.querySelectorAll('nav a').forEach(a =>
