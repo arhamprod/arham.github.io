@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>Releases | Arham</title>
   <!-- Inter font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,6 +63,16 @@
     z-index: 110;
     cursor: pointer;
   }
+
+    /* — Fade effect for navbar + hamburger (mobile) — */
+.navbar,
+.menu-toggle {
+  transition: opacity 0.3s;
+}
+.nav-fade {
+  opacity: 0 !important;
+  pointer-events: none;
+}
 
   /* MOBILE menu adjustments (≤768px) */
   @media(max-width: 768px) {
