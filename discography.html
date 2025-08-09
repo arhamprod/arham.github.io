@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>Discography | Arham</title>
   <!-- Inter font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,9 +23,44 @@
 }
     html { scroll-behavior: smooth; }
     body { margin: 0; font-family: 'Inter', sans-serif; background: #000; color: #fff; line-height: 1.6; }
-    nav { position: fixed; top:0; width:100%; background:rgba(0,0,0,0.5); display:flex; justify-content:center; gap:2em; padding:1em; z-index:100; }
-    nav a { color:#fff; text-decoration:none; font-weight:600; font-size:16px; text-transform:uppercase; transition:opacity .3s; }
-    nav a:hover { opacity:.7; }
+    /* Desktop nav — match Releases */
+nav {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 60px;              /* fixed height */
+  line-height: 60px;         /* vertical centering */
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  padding: 0;                /* IMPORTANT: no extra height */
+  box-sizing: border-box;
+  z-index: 100;
+  transition: transform 0.3s ease-in-out;
+}
+@supports(padding: max(0px)) {
+  nav {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 0 8px;
+  transition: transform 0.2s, color 0.2s;
+}
+nav a:hover { transform: scale(1.1); }
+nav a.active {
+  color: #feb47b;
+  border-bottom: 2px solid #feb47b;
+  padding-bottom: 4px;
+}
+
     header { padding-top:6em; text-align:center; }
     header h1 { margin-bottom:1em; font-size:2.5em; font-weight:600; }
     section { padding:4em 2em; max-width:1100px; margin:auto; background:rgba(0,0,0,0.3); border-radius:12px; }
@@ -45,7 +80,7 @@
   <nav class="navbar">
     <a href="index.html">Home</a>
     <a href="releases.html">Releases</a>
-    <a href="discography.html">Discography</a>
+    <a href="discography.html" class="active">Discography</a>
     <a href="contact.html">Connect</a>
   </nav>
 
