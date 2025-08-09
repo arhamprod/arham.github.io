@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>Connect | Arham</title>
   <!-- Inter font -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-…snip…" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     .form-wrapper {
   max-width: 90%;
@@ -61,21 +61,43 @@
     }
 
     /* Navigation */
-    nav {
-      position: fixed;
-      top: 0; width: 100%;
-      background: rgba(0,0,0,0.5);
-      display: flex; justify-content: center; gap: 2em;
-      padding: 1em; z-index: 100;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      text-transform: uppercase;
-      transition: opacity 0.3s ease;
-    }
-    nav a:hover { opacity: 0.7; }
+   /* Desktop nav — match Releases */
+nav {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 60px;              /* fixed height */
+  line-height: 60px;         /* vertical centering */
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  padding: 0;                /* IMPORTANT: prevents extra height */
+  box-sizing: border-box;
+  z-index: 100;
+  transition: transform 0.3s ease-in-out;
+}
+@supports(padding: max(0px)) {
+  nav {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 0 8px;
+  transition: transform 0.2s, color 0.2s;
+}
+nav a:hover { transform: scale(1.1); }
+nav a.active {
+  color: #feb47b;
+  border-bottom: 2px solid #feb47b;
+  padding-bottom: 4px;
+}
 
     /* Page heading */
     header {
@@ -182,18 +204,12 @@
       margin-top: auto;
     }
 
-    /* Mobile adjustments */
-    @media(max-width:600px) {
-      .form-wrapper {
-        padding: 0 24px;
-      nav {
-        flex-direction: column;
-        gap: 1em;
-      }
-      header h1 {
-        font-size: 2em;
-      }
-    }
+   /* Mobile adjustments */
+@media(max-width:600px) {
+  .form-wrapper { padding: 0 24px; }
+  nav { flex-direction: column; gap: 1em; }
+  header h1 { font-size: 2em; }
+}
   </style>
 </head>
 <body>
@@ -208,7 +224,7 @@
     <a href="index.html">Home</a>
     <a href="releases.html">Releases</a>
     <a href="discography.html">Discography</a>
-    <a href="contact.html">Connect</a>
+    <a href="contact.html" class="active">Connect</a>
   </nav>
 
   <header>
@@ -223,7 +239,7 @@
        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
        <button type="submit">Send Message</button>
      </form>
-    <div>
+    </div>
     <div class="direct-email">
       <p>Email me directly at: <a href="mailto:arhamprod@gmail.com">arhamprod@gmail.com</a></p>
     </div>
