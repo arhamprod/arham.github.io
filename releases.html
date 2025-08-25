@@ -65,10 +65,11 @@
   }
 
     /* — Fade effect for navbar + hamburger (mobile) — */
-.navbar,
-.menu-toggle {
-  transition: opacity 0.3s;
-}
+/* Keep transform transition from 'nav'; only fade the hamburger on mobile */
+.menu-toggle { transition: opacity 0.3s; }
+/* (optional) small perf hint */
+.navbar { will-change: transform; }
+
 .nav-fade {
   opacity: 0 !important;
   pointer-events: none;
