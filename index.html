@@ -265,15 +265,18 @@
     return; // skip desktop logic on mobile
   }
 
-  // ---- DESKTOP BEHAVIOR (unchanged) ----
-  clearTimeout(timeout);
-  if (atTop) {
+  // ---- DESKTOP BEHAVIOR (match Discography: slide) ----
+clearTimeout(timeout);
+
+if (atTop) {
+  navbar.classList.remove('nav-hidden');
+} else if (!scrollingUp) {
+  navbar.classList.add('nav-hidden');
+} else { // scrolling up and not at top/bottom
+  timeout = setTimeout(() => {
     navbar.classList.remove('nav-hidden');
-  } else if (!scrollingUp) {
-    timeout = setTimeout(() => navbar.classList.remove('nav-hidden'), 500);
-  } else {
-    navbar.classList.add('nav-hidden');
-  }
+  }, 500);
+}
 });
 
     // hamburger toggle
