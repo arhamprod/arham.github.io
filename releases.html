@@ -9,23 +9,34 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
-  /* ——————————————————— Nav Styles (copied exactly from index.html) ——————————————————— */
-
+  /* ——————————————————— Unified Nav (matches index.html) ——————————————————— */
   nav {
     position: fixed;
     top: 0; left: 0;
     width: 100%;
-    height: 60px;                /* locked nav height */
-    line-height: 60px;           /* vertically center links */
+    height: 60px;
+    line-height: 60px;
     background: rgba(0,0,0,0.5);
     display: flex;
     justify-content: center;
     gap: 2em;
-    padding: 0;                  /* we handle safe-area below */
+    padding: 0;
     box-sizing: border-box;
     z-index: 100;
     transition: transform 0.3s ease-in-out;
   }
+  /* Navbar animates transform (desktop) + opacity (mobile) */
+  .navbar {
+    transition: transform 0.3s ease-in-out, opacity 0.3s;
+    will-change: transform;
+  }
+  .menu-toggle { transition: opacity 0.3s; }
+
+  .nav-fade {
+    opacity: 0 !important;
+    pointer-events: none;
+  }
+
   @supports(padding: max(0px)) {
     nav {
       padding-left: max(16px, env(safe-area-inset-left));
@@ -48,12 +59,10 @@
     padding-bottom: 4px;
   }
 
-  /* slide-up hide/show on desktop */
-  .navbar.nav-hidden {
-    transform: translateY(-100%);
-  }
+  /* hide on scroll down (desktop only) */
+  .navbar.nav-hidden { transform: translateY(-100%); }
 
-  /* hamburger icon (mobile only) */
+  /* hamburger (mobile only) */
   .menu-toggle {
     display: none;
     position: fixed;
@@ -64,19 +73,8 @@
     cursor: pointer;
   }
 
-    /* — Fade effect for navbar + hamburger (mobile) — */
-/* Keep transform transition from 'nav'; only fade the hamburger on mobile */
-.menu-toggle { transition: opacity 0.3s; }
-/* (optional) small perf hint */
-.navbar { will-change: transform; }
-
-.nav-fade {
-  opacity: 0 !important;
-  pointer-events: none;
-}
-
-  /* MOBILE menu adjustments (≤768px) */
-  @media(max-width: 768px) {
+  /* ——————————————————— Mobile menu (≤768px) ——————————————————— */
+  @media (max-width: 768px) {
     .menu-toggle { display: block; }
     nav {
       display: none;
@@ -84,13 +82,13 @@
       align-items: flex-start;
       background: rgba(0,0,0,0.95);
       width: 220px;
-      top: 72px;
+      top: 72px;               /* sits below hamburger */
       left: 16px;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.4);
       padding: 8px 0;
       gap: 4px;
-      z-index: 109;
+      z-index: 109;            /* behind hamburger */
       height: auto;
       max-height: calc(100vh - 72px);
       overflow-y: auto;
@@ -104,21 +102,19 @@
     }
   }
 
-  /* ——————————————————— Original Releases Page Styles ——————————————————— */
-
-  html {
-    scroll-behavior: smooth;
-  }
+  /* ——————————————————— Page styles (unchanged) ——————————————————— */
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
+    padding-top: 60px;   /* match index.html so content clears fixed nav */
     font-family: 'Inter', sans-serif;
     background: #000;
     color: #fff;
     line-height: 1.6;
   }
   header {
-    padding-top: 6em;
     text-align: center;
+    padding: 2.5em 1em 1em; /* slightly reduced now that body has padding-top */
   }
   header h1 {
     margin-bottom: 1em;
@@ -156,17 +152,9 @@
     transform: translateY(-5px);
     background: rgba(255,255,255,0.2);
   }
-  .card img {
-    width: 100%;
-    display: block;
-  }
-  .card-info {
-    padding: 1em;
-  }
-  .card-info p {
-    margin: .5em 0;
-    font-weight: 600;
-  }
+  .card img { width: 100%; display: block; }
+  .card-info { padding: 1em; }
+  .card-info p { margin: .5em 0; font-weight: 600; }
   .button {
     display: inline-block;
     margin-top: .5em;
@@ -179,10 +167,7 @@
     font-size: 14px;
     transition: transform .2s ease, opacity .3s ease;
   }
-  .button:hover {
-    transform: translateY(-2px);
-    opacity: .85;
-  }
+  .button:hover { transform: translateY(-2px); opacity: .85; }
   footer {
     text-align: center;
     padding: 2em;
@@ -192,82 +177,71 @@
     font-weight: 400;
   }
 
-  /* small‐screen tweak for Releases page */
-  @media(max-width:600px) {
-    nav {
-      flex-direction: column;
-      gap: 1em;
-    }
-  }
-</style>
+  /* ⚠️ Removed the old @media(max-width:600px) that overrode nav layout */
+  </style>
 </head>
 <body>
+  <!-- HAMBURGER -->
   <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-<nav class="navbar">
-  <a href="index.html">Home</a>
-  <a href="releases.html" class="active">Releases</a>
-  <a href="discography.html">Discography</a>
-  <a href="contact.html">Connect</a>
-</nav>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="releases.html" class="active">Releases</a>
+    <a href="discography.html">Discography</a>
+    <a href="contact.html">Connect</a>
+  </nav>
+
   <header><h1>Releases</h1></header>
 
   <!-- EPs -->
   <section>
     <h2>EPs</h2>
     <div class="grid">
-      <!-- 1) Compositions Vol. 1 -->
+      <!-- cards unchanged -->
       <div class="card">
         <a href="https://album.link/i/1493024873" target="_blank">
           <img src="covers/compositions-vol1.jpg" alt="Arham – Compositions Vol. 1">
         </a>
         <div class="card-info">
           <p>Arham – Compositions Vol. 1</p>
-          <a class="button" href="https://album.link/i/1493024873" target="_blank"
-             style="background:#FF0000;">Listen</a>
+          <a class="button" href="https://album.link/i/1493024873" target="_blank" style="background:#FF0000;">Listen</a>
         </div>
       </div>
-      <!-- 2) Compositions Vol. 2 -->
       <div class="card">
         <a href="https://album.link/i/1507384262" target="_blank">
           <img src="covers/compositions-vol2.jpg" alt="Arham – Compositions Vol. 2">
         </a>
         <div class="card-info">
           <p>Arham – Compositions Vol. 2</p>
-          <a class="button" href="https://album.link/i/1507384262" target="_blank"
-             style="background:#272757;">Listen</a>
+          <a class="button" href="https://album.link/i/1507384262" target="_blank" style="background:#272757;">Listen</a>
         </div>
       </div>
-      <!-- 3) Compositions Vol. 3 -->
       <div class="card">
         <a href="https://album.link/i/1532147220" target="_blank">
           <img src="covers/compositions-vol3.jpg" alt="Arham – Compositions Vol. 3">
         </a>
         <div class="card-info">
           <p>Arham – Compositions Vol. 3</p>
-          <a class="button" href="https://album.link/i/1532147220" target="_blank"
-             style="background:#FF69B4;">Listen</a>
+          <a class="button" href="https://album.link/i/1532147220" target="_blank" style="background:#FF69B4;">Listen</a>
         </div>
       </div>
-      <!-- 4) Compositions Vol. 4 -->
       <div class="card">
         <a href="https://album.link/i/1579805926" target="_blank">
           <img src="covers/compositions-vol4.jpg" alt="Arham – Compositions Vol. 4">
         </a>
         <div class="card-info">
           <p>Arham – Compositions Vol. 4</p>
-          <a class="button" href="https://album.link/i/1579805926" target="_blank"
-             style="background:#84b287;">Listen</a>
+          <a class="button" href="https://album.link/i/1579805926" target="_blank" style="background:#84b287;">Listen</a>
         </div>
       </div>
-      <!-- 5) Compositions Vol. 5 -->
       <div class="card">
         <a href="https://album.link/i/1650845928" target="_blank">
           <img src="covers/compositions-vol5.jpg" alt="Arham – Compositions Vol. 5">
         </a>
         <div class="card-info">
           <p>Arham – Compositions Vol. 5</p>
-          <a class="button" href="https://album.link/i/1650845928" target="_blank"
-             style="background:#aa9c8a;">Listen</a>
+          <a class="button" href="https://album.link/i/1650845928" target="_blank" style="background:#aa9c8a;">Listen</a>
         </div>
       </div>
     </div>
@@ -277,101 +251,92 @@
   <section>
     <h2>Remixes</h2>
     <div class="grid">
-      <!-- 1) Still Not On Me (Arham Remix) -->
       <div class="card">
         <a href="https://song.link/i/1626087683" target="_blank">
           <img src="covers/still-not-on-me-remix.jpg" alt="Sim – Still Not On Me (Arham Remix)">
         </a>
         <div class="card-info">
           <p>Sim – Still Not On Me (Arham Remix)</p>
-          <a class="button" href="https://song.link/i/1626087683" target="_blank"
-             style="background:#2E86C1;">Listen</a>
+          <a class="button" href="https://song.link/i/1626087683" target="_blank" style="background:#2E86C1;">Listen</a>
         </div>
       </div>
-      <!-- 2) Deserve (Arham Remix) -->
       <div class="card">
         <a href="https://song.link/i/1669041174" target="_blank">
           <img src="covers/deserve-remix.jpg" alt="Kadiri – Deserve (Arham Remix)">
         </a>
         <div class="card-info">
           <p>Kadiri – Deserve (Arham Remix)</p>
-          <a class="button" href="https://song.link/i/1669041174" target="_blank"
-             style="background:#055695;">Listen</a>
+          <a class="button" href="https://song.link/i/1669041174" target="_blank" style="background:#055695;">Listen</a>
         </div>
       </div>
-      <!-- 3) Retrospect (Arham Remix) -->
       <div class="card">
         <a href="https://song.link/i/1779486331" target="_blank">
           <img src="covers/retrospect-remix.jpg" alt="Kylo – Retrospect (Arham Remix)">
         </a>
         <div class="card-info">
           <p>Kylo – Retrospect (Arham Remix)</p>
-          <a class="button" href="https://song.link/i/1779486331" target="_blank"
-             style="background:#ce93d8;">Listen</a>
+          <a class="button" href="https://song.link/i/1779486331" target="_blank" style="background:#ce93d8;">Listen</a>
         </div>
       </div>
-      <!-- 4) Sober (Arham Remix) -->
       <div class="card">
         <a href="https://song.link/i/1681200073" target="_blank">
           <img src="covers/sober-remix.jpg" alt="Geneva Lei – Sober (Arham Remix)">
         </a>
         <div class="card-info">
           <p>Geneva Lei – Sober (Arham Remix)</p>
-          <a class="button" href="https://song.link/i/1681200073" target="_blank"
-             style="background:#ff4500;">Listen</a>
+          <a class="button" href="https://song.link/i/1681200073" target="_blank" style="background:#ff4500;">Listen</a>
         </div>
       </div>
     </div>
   </section>
 
   <footer><p>© Arham. All rights reserved.</p></footer>
+
   <script>
-  const navbar = document.querySelector('.navbar');
-  const menuToggle = document.querySelector('.menu-toggle');
-  let lastY = window.scrollY, timeout;
+    const navbar = document.querySelector('.navbar');
+    const menuToggle = document.querySelector('.menu-toggle');
+    let lastY = window.scrollY, timeout;
 
-  window.addEventListener('scroll', () => {
-    const currY = window.scrollY;
-    const atTop = currY <= 10;
-    const scrollingUp = currY < lastY;
-    lastY = currY;
+    window.addEventListener('scroll', () => {
+      const currY = window.scrollY;
+      const atTop = currY <= 10;
+      const scrollingUp = currY < lastY;
+      lastY = currY;
+      const atBottom = (window.innerHeight + currY) >= (document.body.offsetHeight - 10);
 
-    // MOBILE: fade nav & auto-close the menu
-    if (window.innerWidth <= 768) {
-      if (!scrollingUp && !atTop) {
-        navbar.classList.add('nav-fade');
-        menuToggle.classList.add('nav-fade');
-        navbar.classList.remove('show');
-      } else {
-        navbar.classList.remove('nav-fade');
-        menuToggle.classList.remove('nav-fade');
+      // MOBILE: fade + auto-close
+      if (window.innerWidth <= 768) {
+        if (!scrollingUp && !atTop) {
+          navbar.classList.add('nav-fade');
+          menuToggle.classList.add('nav-fade');
+          navbar.classList.remove('show');
+        } else {
+          navbar.classList.remove('nav-fade');
+          menuToggle.classList.remove('nav-fade');
+        }
+        return; // skip desktop logic on mobile
       }
-      return;
+
+      // DESKTOP: slide-up like Home
+      clearTimeout(timeout);
+      if (atTop) {
+        navbar.classList.remove('nav-hidden');
+      } else if (!scrollingUp) {
+        navbar.classList.add('nav-hidden');
+      } else if (!atBottom) {
+        timeout = setTimeout(() => navbar.classList.remove('nav-hidden'), 500);
+      }
+    });
+
+    function toggleMenu() {
+      navbar.classList.remove('nav-fade');
+      menuToggle.classList.remove('nav-fade');
+      navbar.classList.toggle('show');
     }
 
-    // DESKTOP: slide-up hide/show
-    clearTimeout(timeout);
-    if (!scrollingUp && !atTop) {
-      navbar.classList.add('nav-hidden');
-    } else if (atTop) {
-      navbar.classList.remove('nav-hidden');
-    } else if (scrollingUp) {
-      timeout = setTimeout(() => navbar.classList.remove('nav-hidden'), 500);
-    }
-  });
-
-  // toggle menu on hamburger click
-  function toggleMenu() {
-    navbar.classList.remove('nav-fade');
-    menuToggle.classList.remove('nav-fade');
-    navbar.classList.toggle('show');
-  }
-
-  // hide menu when clicking a link (mobile)
-  document.querySelectorAll('nav a').forEach(a =>
-    a.addEventListener('click', () => navbar.classList.remove('show'))
-  );
-</script>
-
+    document.querySelectorAll('nav a').forEach(a =>
+      a.addEventListener('click', () => navbar.classList.remove('show'))
+    );
+  </script>
 </body>
 </html>
