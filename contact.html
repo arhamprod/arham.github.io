@@ -198,6 +198,29 @@
     font-size: 14px;
     margin-top: auto;
   }
+
+    /* 1) Make form fields respect container width including borders/padding */
+input, textarea, button {
+  box-sizing: border-box;
+}
+
+/* 2) Mobile-only: tighten the container padding and ensure equal gutter */
+@media (max-width: 768px) {
+  .contact-section {
+    /* keep centered + even gutters */
+    width: 92%;
+    padding: 24px 16px;     /* equal left/right padding on the card */
+  }
+  .form-wrapper {
+    max-width: 560px;       /* guardrail on larger phones */
+    margin: 0 auto;         /* center the inner wrapper */
+    padding-inline: 0;      /* avoid accidental extra left/right padding */
+  }
+  form { gap: 12px; }       /* optional: slightly tighter spacing on mobile */
+  input, textarea, button {
+    width: 100%;            /* fill wrapper perfectly */
+  }
+}
   </style>
 </head>
 <body>
