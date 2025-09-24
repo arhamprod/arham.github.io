@@ -11,205 +11,193 @@
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
-    .form-wrapper {
-  max-width: 90%;
-  width: 400px;
-  margin: 0 auto;
-  padding: 0 16px;
-  box-sizing: border-box;
-}
-    .navbar {
-  transition: transform 0.3s ease-in-out;
-  will-change: transform;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100;
-}
-
-.nav-hidden {
-  transform: translateY(-100%);
-}
-
-    /* Smooth scroll */
-    html { scroll-behavior: smooth; }
-
-    /* Ensure the page always fills the viewport */
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #000;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    /* Video background */
-    .video-container {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      overflow: hidden;
-      z-index: -1;
-    }
-    .video-container video {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      filter: brightness(40%);
-      pointer-events: none;
-    }
-
-    /* Navigation */
-   /* Desktop nav — match Releases */
-nav {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 60px;              /* fixed height */
-  line-height: 60px;         /* vertical centering */
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  justify-content: center;
-  gap: 2em;
-  padding: 0;                /* IMPORTANT: prevents extra height */
-  box-sizing: border-box;
-  z-index: 100;
-  transition: transform 0.3s ease-in-out;
-}
-@supports(padding: max(0px)) {
+  /* ——————————————————— Unified Nav (matches index.html) ——————————————————— */
   nav {
-    padding-left: max(16px, env(safe-area-inset-left));
-    padding-right: max(16px, env(safe-area-inset-right));
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    padding: 0;
+    box-sizing: border-box;
+    z-index: 100;
+    transition: transform 0.3s ease-in-out;
   }
-}
-nav a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 16px;
-  text-transform: uppercase;
-  padding: 0 8px;
-  transition: transform 0.2s, color 0.2s;
-}
-nav a:hover { transform: scale(1.1); }
-nav a.active {
-  color: #feb47b;
-  border-bottom: 2px solid #feb47b;
-  padding-bottom: 4px;
-}
+  .navbar {
+    transition: transform 0.3s ease-in-out, opacity 0.3s; /* desktop slide + mobile fade */
+    will-change: transform;
+  }
+  .navbar.nav-hidden { transform: translateY(-100%); }
 
-    /* Page heading */
-    header {
-      padding-top: 7em;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 2.5em;
-      font-weight: 700;
-      margin: 0;
-    }
+  .menu-toggle {
+    display: none;
+    position: fixed;
+    top: 16px; left: 16px;
+    font-size: 28px;
+    color: #fff;
+    z-index: 110;
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+  .nav-fade {
+    opacity: 0 !important;
+    pointer-events: none;
+  }
 
-    /* Contact container */
-    .contact-section {
-      flex: 1;
-      max-width: 600px;
-      width: 90%;
-      margin: 2em auto;
-      background: rgba(0,0,0,0.6);
-      border-radius: 12px;
-      padding: 2em;
-      backdrop-filter: blur(10px);
+  @supports(padding: max(0px)) {
+    nav {
+      padding-left: max(16px, env(safe-area-inset-left));
+      padding-right: max(16px, env(safe-area-inset-right));
     }
+  }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 0 8px;
+    transition: transform 0.2s, color 0.2s;
+  }
+  nav a:hover { transform: scale(1.1); }
+  nav a.active {
+    color: #feb47b;
+    border-bottom: 2px solid #feb47b;
+    padding-bottom: 4px;
+  }
 
-    /* Form styling */
-    form {
-      display: flex;
+  /* ——————————————————— Mobile menu (≤768px) ——————————————————— */
+  @media (max-width: 768px) {
+    .menu-toggle { display: block; }
+    nav {
+      display: none;
       flex-direction: column;
-      gap: 1em;
-    }
-    input, textarea {
-      width: 100%;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.3);
+      align-items: flex-start;
+      background: rgba(0,0,0,0.95);
+      width: 220px;
+      top: 72px;                /* sits below hamburger */
+      left: 16px;
       border-radius: 8px;
-      padding: 0.75em;
-      color: #fff;
-      font-size: 1em;
-      font-family: 'Inter', sans-serif;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      padding: 8px 0;
+      gap: 4px;
+      z-index: 109;             /* behind hamburger */
+      height: auto;
+      max-height: calc(100vh - 72px);
+      overflow-y: auto;
     }
-    input::placeholder,
-    textarea::placeholder {
-      color: #ccc;
+    nav.show { display: flex; }
+    nav a {
+      display: block;
+      padding: 6px 16px;
+      font-size: 16px;
+      line-height: 1.4;
     }
-    /* Submit button dark red */
-    button[type="submit"] {
-      background-color: #8B0000;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 0.75em;
-      font-size: 1em;
-      font-weight: 600;
-      font-family: 'Inter', sans-serif;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button[type="submit"]:hover {
-      background-color: #a30000;
-    }
+  }
 
-    /* Direct email link */
-    .direct-email {
-      text-align: center;
-      margin-top: 2em;
-      font-size: 0.9em;
-    }
-    .direct-email a {
-      color: #fff;
-      font-weight: 600;
-      text-decoration: underline;
-    }
+  /* ——————————————————— Page Styles ——————————————————— */
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    padding-top: 60px; /* clear fixed nav */
+    font-family: 'Inter', sans-serif;
+    background: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
 
-    /* Social icons */
-    .social-icons {
-      margin-top: 1.5em;
-      display: flex;
-      justify-content: center;
-      gap: 1.5em;
-      font-size: 1.5em;
-    }
-    .social-icons a {
-      color: #fff;
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-    .social-icons a:hover {
-      transform: translateY(-5px);
-    }
-    /* Brand colors on hover */
-    .social-icons a[href*="soundcloud"]:hover { color: #FF5500; }
-    .social-icons a[href*="youtube"]:hover { color: #FF0000; }
-    .social-icons a[href*="instagram"]:hover { color: #E1306C; }
-    .social-icons a[href*="twitter"]:hover,
-    .social-icons a[href*="x.com"]:hover { color: #1DA1F2; }
-    .social-icons a[href*="tiktok"]:hover { color: #69C9D0; }
+  /* Video background */
+  .video-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    overflow: hidden;
+    z-index: -1;
+  }
+  .video-container video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(40%);
+    pointer-events: none;
+  }
 
-    /* Footer pinned to bottom */
-    footer {
-      text-align: center;
-      padding: 1.5em;
-      background: #000;
-      color: #aaa;
-      font-size: 14px;
-      margin-top: auto;
-    }
+  header { text-align: center; padding: 2.5em 1em 1em; }
+  header h1 { font-size: 2.5em; font-weight: 700; margin: 0; }
 
-   /* Mobile adjustments */
-@media(max-width:600px) {
-  .form-wrapper { padding: 0 24px; }
-  nav { flex-direction: column; gap: 1em; }
-  header h1 { font-size: 2em; }
-}
+  .contact-section {
+    flex: 1;
+    max-width: 600px;
+    width: 90%;
+    margin: 2em auto;
+    background: rgba(0,0,0,0.6);
+    border-radius: 12px;
+    padding: 2em;
+    backdrop-filter: blur(10px);
+  }
+
+  form { display: flex; flex-direction: column; gap: 1em; }
+  input, textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 8px;
+    padding: 0.75em;
+    color: #fff;
+    font-size: 1em;
+    font-family: 'Inter', sans-serif;
+  }
+  input::placeholder, textarea::placeholder { color: #ccc; }
+
+  button[type="submit"] {
+    background-color: #8B0000;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75em;
+    font-size: 1em;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button[type="submit"]:hover { background-color: #a30000; }
+
+  .direct-email { text-align: center; margin-top: 2em; font-size: 0.9em; }
+  .direct-email a { color: #fff; font-weight: 600; text-decoration: underline; }
+
+  .social-icons {
+    margin-top: 1.5em;
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+    font-size: 1.5em;
+  }
+  .social-icons a {
+    color: #fff;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  .social-icons a:hover { transform: translateY(-5px); }
+  .social-icons a[href*="soundcloud"]:hover { color: #FF5500; }
+  .social-icons a[href*="youtube"]:hover { color: #FF0000; }
+  .social-icons a[href*="instagram"]:hover { color: #E1306C; }
+  .social-icons a[href*="twitter"]:hover,
+  .social-icons a[href*="x.com"]:hover { color: #1DA1F2; }
+  .social-icons a[href*="tiktok"]:hover { color: #69C9D0; }
+
+  footer {
+    text-align: center;
+    padding: 1.5em;
+    background: #000;
+    color: #aaa;
+    font-size: 14px;
+    margin-top: auto;
+  }
   </style>
 </head>
 <body>
@@ -220,6 +208,10 @@ nav a.active {
     </video>
   </div>
 
+  <!-- HAMBURGER (mobile only) -->
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <!-- NAV -->
   <nav class="navbar">
     <a href="index.html">Home</a>
     <a href="releases.html">Releases</a>
@@ -227,9 +219,7 @@ nav a.active {
     <a href="contact.html" class="active">Connect</a>
   </nav>
 
-  <header>
-    <h1>Connect</h1>
-  </header>
+  <header><h1>Connect</h1></header>
 
   <section class="contact-section">
     <div class="form-wrapper">
@@ -253,39 +243,53 @@ nav a.active {
     </div>
   </section>
 
-  <footer>
-    <p>© Arham. All rights reserved.</p>
-  </footer>
+  <footer><p>© Arham. All rights reserved.</p></footer>
+
   <script>
-  const navbar = document.querySelector('.navbar');
-  let lastScrollY = window.scrollY;
-  let showNavTimeout;
+    const navbar = document.querySelector('.navbar');
+    const menuToggle = document.querySelector('.menu-toggle');
+    let lastY = window.scrollY, timeout;
 
-  window.addEventListener('scroll', () => {
-    const currentScrollY = window.scrollY;
-    const scrollingUp = currentScrollY < lastScrollY;
-    const atTop = currentScrollY <= 10;
-    const atBottom = (window.innerHeight + currentScrollY) >= (document.body.offsetHeight - 10);
+    window.addEventListener('scroll', () => {
+      const currY = window.scrollY;
+      const atTop = currY <= 10;
+      const scrollingUp = currY < lastY;
+      lastY = currY;
+      const atBottom = (window.innerHeight + currY) >= (document.body.offsetHeight - 10);
 
-    if (atTop) {
-      clearTimeout(showNavTimeout);
-      navbar.classList.remove('nav-hidden');
-    }
+      // MOBILE: fade + auto-close
+      if (window.innerWidth <= 768) {
+        if (!scrollingUp && !atTop) {
+          navbar.classList.add('nav-fade');
+          menuToggle.classList.add('nav-fade');
+          navbar.classList.remove('show');
+        } else {
+          navbar.classList.remove('nav-fade');
+          menuToggle.classList.remove('nav-fade');
+        }
+        return; // skip desktop logic on mobile
+      }
 
-    if (!scrollingUp && !atTop) {
-      clearTimeout(showNavTimeout);
-      navbar.classList.add('nav-hidden');
-    }
-
-    if (scrollingUp && !atBottom && !atTop) {
-      clearTimeout(showNavTimeout);
-      showNavTimeout = setTimeout(() => {
+      // DESKTOP: slide-up like Home
+      clearTimeout(timeout);
+      if (atTop) {
         navbar.classList.remove('nav-hidden');
-      }, 500);
+      } else if (!scrollingUp) {
+        navbar.classList.add('nav-hidden');
+      } else if (!atBottom) {
+        timeout = setTimeout(() => navbar.classList.remove('nav-hidden'), 500);
+      }
+    });
+
+    function toggleMenu() {
+      navbar.classList.remove('nav-fade');
+      menuToggle.classList.remove('nav-fade');
+      navbar.classList.toggle('show');
     }
 
-    lastScrollY = currentScrollY;
-  });
-</script>
+    document.querySelectorAll('nav a').forEach(a =>
+      a.addEventListener('click', () => navbar.classList.remove('show'))
+    );
+  </script>
 </body>
 </html>
